@@ -1,0 +1,426 @@
+STATUS | wrapper  | 2013/02/24 15:29:17 | --> Wrapper Started as Console
+STATUS | wrapper  | 2013/02/24 15:29:17 | Launching a JVM...
+INFO   | jvm 1    | 2013/02/24 15:29:17 | Wrapper (Version 3.2.3) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2013/02/24 15:29:17 |   Copyright 1999-2006 Tanuki Software, Inc.  All Rights Reserved.
+INFO   | jvm 1    | 2013/02/24 15:29:17 | 
+INFO   | jvm 1    | 2013/02/24 15:29:17 | 
+INFO   | jvm 1    | 2013/02/24 15:29:17 | WARNING - Unable to load the Wrapper's native library 'libwrapper.jnilib'.
+INFO   | jvm 1    | 2013/02/24 15:29:17 |           The file is located on the path at the following location but
+INFO   | jvm 1    | 2013/02/24 15:29:17 |           could not be loaded:
+INFO   | jvm 1    | 2013/02/24 15:29:17 |             /Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/../../bin/macosx/libwrapper.jnilib
+INFO   | jvm 1    | 2013/02/24 15:29:17 |           Please verify that the file is readable by the current user
+INFO   | jvm 1    | 2013/02/24 15:29:17 |           and that the file has not been corrupted in any way.
+INFO   | jvm 1    | 2013/02/24 15:29:17 |           One common cause of this problem is running a 32-bit version
+INFO   | jvm 1    | 2013/02/24 15:29:17 |           of the Wrapper with a 64-bit version of Java, or vica versa.
+INFO   | jvm 1    | 2013/02/24 15:29:17 |           This is a 64-bit JVM.
+INFO   | jvm 1    | 2013/02/24 15:29:17 |           Reported cause:
+INFO   | jvm 1    | 2013/02/24 15:29:17 |             /Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/libwrapper.jnilib:  no suitable image found.  Did find:  /Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/libwrapper.jnilib: no matching architecture in universal wrapper
+INFO   | jvm 1    | 2013/02/24 15:29:17 |           System signals will not be handled correctly.
+INFO   | jvm 1    | 2013/02/24 15:29:17 | 
+INFO   | jvm 1    | 2013/02/24 15:29:17 | Java Runtime: Apple Inc. 1.6.0_41 /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+INFO   | jvm 1    | 2013/02/24 15:29:17 |   Heap sizes: current=83008k  free=77186k  max=1040064k
+INFO   | jvm 1    | 2013/02/24 15:29:17 |     JVM args: -Dactivemq.home=../.. -Dactivemq.base=../.. -Djavax.net.ssl.keyStorePassword=password -Djavax.net.ssl.trustStorePassword=password -Djavax.net.ssl.keyStore=../../conf/broker.ks -Djavax.net.ssl.trustStore=../../conf/broker.ts -Dcom.sun.management.jmxremote -Dorg.apache.activemq.UseDedicatedTaskRunner=true -Djava.util.logging.config.file=logging.properties -Dactivemq.conf=../../conf -Dactivemq.data=../../data -Xmx1024m -Djava.library.path=../../bin/macosx/ -Dwrapper.key=P7P6caQNwxYm91xg -Dwrapper.port=32000 -Dwrapper.jvm.port.min=31000 -Dwrapper.jvm.port.max=31999 -Dwrapper.pid=27218 -Dwrapper.version=3.2.3 -Dwrapper.native_library=wrapper -Dwrapper.cpu.timeout=10 -Dwrapper.jvmid=1
+INFO   | jvm 1    | 2013/02/24 15:29:17 | Extensions classpath:
+INFO   | jvm 1    | 2013/02/24 15:29:17 |   [../../lib,../../lib/camel,../../lib/optional,../../lib/web,../../lib/extra]
+INFO   | jvm 1    | 2013/02/24 15:29:17 | ACTIVEMQ_HOME: ../..
+INFO   | jvm 1    | 2013/02/24 15:29:17 | ACTIVEMQ_BASE: ../..
+INFO   | jvm 1    | 2013/02/24 15:29:17 | ACTIVEMQ_CONF: ../../conf
+INFO   | jvm 1    | 2013/02/24 15:29:17 | ACTIVEMQ_DATA: ../../data
+INFO   | jvm 1    | 2013/02/24 15:29:17 | Loading message broker from: xbean:activemq.xml
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 13/02/24 15:29:18 INFO xbean.XBeanBrokerFactory$1: Refreshing org.apache.activemq.xbean.XBeanBrokerFactory$1@255d17d7: startup date [Sun Feb 24 15:29:18 EST 2013]; root of context hierarchy
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 13/02/24 15:29:18 INFO v2.XBeanXmlBeanDefinitionReader: Loading XML bean definitions from class path resource [activemq.xml]
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 13/02/24 15:29:18 INFO v2.XBeanXmlBeanDefinitionReader: Loading XML bean definitions from class path resource [jetty.xml]
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 13/02/24 15:29:18 ERROR xbean.XBeanBrokerFactory: Failed to load: class path resource [activemq.xml], reason: IOException parsing XML document from class path resource [jetty.xml]; nested exception is java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [jetty.xml]; nested exception is java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:341)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:302)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanBeanDefinitionDocumentReader.importBeanDefinitionResource(XBeanBeanDefinitionDocumentReader.java:129)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanBeanDefinitionDocumentReader.parseDefaultElement(XBeanBeanDefinitionDocumentReader.java:95)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanBeanDefinitionDocumentReader.parseBeanDefinitions(XBeanBeanDefinitionDocumentReader.java:81)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:93)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:493)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanXmlBeanDefinitionReader.registerBeanDefinitions(XBeanXmlBeanDefinitionReader.java:79)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:390)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:334)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:302)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.loadBeanDefinitions(ResourceXmlApplicationContext.java:111)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.loadBeanDefinitions(ResourceXmlApplicationContext.java:104)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:130)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:467)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:397)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:64)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:52)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.xbean.XBeanBrokerFactory$1.<init>(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createApplicationContext(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createBroker(XBeanBrokerFactory.java:66)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:71)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:54)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.StartCommand.startBroker(StartCommand.java:115)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.StartCommand.runTask(StartCommand.java:74)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.ShellCommand.runTask(ShellCommand.java:148)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.ShellCommand.main(ShellCommand.java:90)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.Main.runTaskClass(Main.java:262)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.Main.main(Main.java:115)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.tanukisoftware.wrapper.WrapperSimpleApp.run(WrapperSimpleApp.java:240)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at java.lang.Thread.run(Thread.java:680)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | Caused by: java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:158)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:328)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	... 40 more
+INFO   | jvm 1    | 2013/02/24 15:29:18 | ERROR: java.lang.RuntimeException: Failed to execute start task. Reason: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [jetty.xml]; nested exception is java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | java.lang.RuntimeException: Failed to execute start task. Reason: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [jetty.xml]; nested exception is java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.StartCommand.runTask(StartCommand.java:98)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.ShellCommand.runTask(ShellCommand.java:148)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.ShellCommand.main(ShellCommand.java:90)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.Main.runTaskClass(Main.java:262)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.Main.main(Main.java:115)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.tanukisoftware.wrapper.WrapperSimpleApp.run(WrapperSimpleApp.java:240)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at java.lang.Thread.run(Thread.java:680)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [jetty.xml]; nested exception is java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:341)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:302)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanBeanDefinitionDocumentReader.importBeanDefinitionResource(XBeanBeanDefinitionDocumentReader.java:129)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanBeanDefinitionDocumentReader.parseDefaultElement(XBeanBeanDefinitionDocumentReader.java:95)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanBeanDefinitionDocumentReader.parseBeanDefinitions(XBeanBeanDefinitionDocumentReader.java:81)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:93)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:493)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanXmlBeanDefinitionReader.registerBeanDefinitions(XBeanXmlBeanDefinitionReader.java:79)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:390)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:334)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:302)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.loadBeanDefinitions(ResourceXmlApplicationContext.java:111)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.loadBeanDefinitions(ResourceXmlApplicationContext.java:104)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:130)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:467)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:397)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:64)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:52)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.xbean.XBeanBrokerFactory$1.<init>(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createApplicationContext(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createBroker(XBeanBrokerFactory.java:66)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:71)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:54)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.StartCommand.startBroker(StartCommand.java:115)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.StartCommand.runTask(StartCommand.java:74)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	... 16 more
+INFO   | jvm 1    | 2013/02/24 15:29:18 | Caused by: java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:158)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:328)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	... 40 more
+INFO   | jvm 1    | 2013/02/24 15:29:18 | ERROR: java.lang.Exception: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [jetty.xml]; nested exception is java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | java.lang.Exception: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [jetty.xml]; nested exception is java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.StartCommand.runTask(StartCommand.java:99)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.ShellCommand.runTask(ShellCommand.java:148)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.ShellCommand.main(ShellCommand.java:90)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.Main.runTaskClass(Main.java:262)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.Main.main(Main.java:115)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.tanukisoftware.wrapper.WrapperSimpleApp.run(WrapperSimpleApp.java:240)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at java.lang.Thread.run(Thread.java:680)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: IOException parsing XML document from class path resource [jetty.xml]; nested exception is java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:341)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:302)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanBeanDefinitionDocumentReader.importBeanDefinitionResource(XBeanBeanDefinitionDocumentReader.java:129)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanBeanDefinitionDocumentReader.parseDefaultElement(XBeanBeanDefinitionDocumentReader.java:95)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanBeanDefinitionDocumentReader.parseBeanDefinitions(XBeanBeanDefinitionDocumentReader.java:81)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:93)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.registerBeanDefinitions(XmlBeanDefinitionReader.java:493)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.v2.XBeanXmlBeanDefinitionReader.registerBeanDefinitions(XBeanXmlBeanDefinitionReader.java:79)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:390)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:334)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:302)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.loadBeanDefinitions(ResourceXmlApplicationContext.java:111)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.loadBeanDefinitions(ResourceXmlApplicationContext.java:104)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.context.support.AbstractRefreshableApplicationContext.refreshBeanFactory(AbstractRefreshableApplicationContext.java:130)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:467)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:397)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:64)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:52)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.xbean.XBeanBrokerFactory$1.<init>(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createApplicationContext(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createBroker(XBeanBrokerFactory.java:66)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:71)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:54)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.StartCommand.startBroker(StartCommand.java:115)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.apache.activemq.console.command.StartCommand.runTask(StartCommand.java:74)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	... 16 more
+INFO   | jvm 1    | 2013/02/24 15:29:18 | Caused by: java.io.FileNotFoundException: class path resource [jetty.xml] cannot be opened because it does not exist
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:158)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:328)
+INFO   | jvm 1    | 2013/02/24 15:29:18 | 	... 40 more
+STATUS | wrapper  | 2013/02/24 15:29:21 | <-- Wrapper Stopped
+STATUS | wrapper  | 2013/02/24 15:30:00 | --> Wrapper Started as Console
+STATUS | wrapper  | 2013/02/24 15:30:00 | Launching a JVM...
+INFO   | jvm 1    | 2013/02/24 15:30:00 | Wrapper (Version 3.2.3) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2013/02/24 15:30:00 |   Copyright 1999-2006 Tanuki Software, Inc.  All Rights Reserved.
+INFO   | jvm 1    | 2013/02/24 15:30:00 | 
+INFO   | jvm 1    | 2013/02/24 15:30:00 | 
+INFO   | jvm 1    | 2013/02/24 15:30:00 | WARNING - Unable to load the Wrapper's native library 'libwrapper.jnilib'.
+INFO   | jvm 1    | 2013/02/24 15:30:00 |           The file is located on the path at the following location but
+INFO   | jvm 1    | 2013/02/24 15:30:00 |           could not be loaded:
+INFO   | jvm 1    | 2013/02/24 15:30:00 |             /Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/../../bin/macosx/libwrapper.jnilib
+INFO   | jvm 1    | 2013/02/24 15:30:00 |           Please verify that the file is readable by the current user
+INFO   | jvm 1    | 2013/02/24 15:30:00 |           and that the file has not been corrupted in any way.
+INFO   | jvm 1    | 2013/02/24 15:30:00 |           One common cause of this problem is running a 32-bit version
+INFO   | jvm 1    | 2013/02/24 15:30:00 |           of the Wrapper with a 64-bit version of Java, or vica versa.
+INFO   | jvm 1    | 2013/02/24 15:30:00 |           This is a 64-bit JVM.
+INFO   | jvm 1    | 2013/02/24 15:30:00 |           Reported cause:
+INFO   | jvm 1    | 2013/02/24 15:30:00 |             /Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/libwrapper.jnilib:  no suitable image found.  Did find:  /Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/libwrapper.jnilib: no matching architecture in universal wrapper
+INFO   | jvm 1    | 2013/02/24 15:30:00 |           System signals will not be handled correctly.
+INFO   | jvm 1    | 2013/02/24 15:30:00 | 
+INFO   | jvm 1    | 2013/02/24 15:30:00 | Java Runtime: Apple Inc. 1.6.0_41 /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+INFO   | jvm 1    | 2013/02/24 15:30:00 |   Heap sizes: current=83008k  free=77186k  max=1040064k
+INFO   | jvm 1    | 2013/02/24 15:30:00 |     JVM args: -Dactivemq.home=../.. -Dactivemq.base=../.. -Djavax.net.ssl.keyStorePassword=password -Djavax.net.ssl.trustStorePassword=password -Djavax.net.ssl.keyStore=../../conf/broker.ks -Djavax.net.ssl.trustStore=../../conf/broker.ts -Dcom.sun.management.jmxremote -Dorg.apache.activemq.UseDedicatedTaskRunner=true -Djava.util.logging.config.file=logging.properties -Dactivemq.conf=../../conf -Dactivemq.data=../../data -Xmx1024m -Djava.library.path=../../bin/macosx/ -Dwrapper.key=Gsi_9I9OUcVt2aG1 -Dwrapper.port=32000 -Dwrapper.jvm.port.min=31000 -Dwrapper.jvm.port.max=31999 -Dwrapper.pid=27280 -Dwrapper.version=3.2.3 -Dwrapper.native_library=wrapper -Dwrapper.cpu.timeout=10 -Dwrapper.jvmid=1
+INFO   | jvm 1    | 2013/02/24 15:30:00 | Extensions classpath:
+INFO   | jvm 1    | 2013/02/24 15:30:00 |   [../../lib,../../lib/camel,../../lib/optional,../../lib/web,../../lib/extra]
+INFO   | jvm 1    | 2013/02/24 15:30:00 | ACTIVEMQ_HOME: ../..
+INFO   | jvm 1    | 2013/02/24 15:30:00 | ACTIVEMQ_BASE: ../..
+INFO   | jvm 1    | 2013/02/24 15:30:00 | ACTIVEMQ_CONF: ../../conf
+INFO   | jvm 1    | 2013/02/24 15:30:00 | ACTIVEMQ_DATA: ../../data
+INFO   | jvm 1    | 2013/02/24 15:30:00 | Loading message broker from: xbean:activemq.xml
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 13/02/24 15:30:00 INFO xbean.XBeanBrokerFactory$1: Refreshing org.apache.activemq.xbean.XBeanBrokerFactory$1@b07f45d: startup date [Sun Feb 24 15:30:00 EST 2013]; root of context hierarchy
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 13/02/24 15:30:01 INFO v2.XBeanXmlBeanDefinitionReader: Loading XML bean definitions from class path resource [activemq.xml]
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 13/02/24 15:30:01 INFO v2.XBeanXmlBeanDefinitionReader: Loading XML bean definitions from class path resource [jetty.xml]
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 13/02/24 15:30:01 INFO config.PropertyPlaceholderConfigurer: Loading properties file from URL [file:../../conf/credentials.properties]
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 13/02/24 15:30:01 INFO support.DefaultListableBeanFactory: Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@fc8fb4b: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,org.apache.activemq.xbean.XBeanBrokerService#0,securityLoginService,securityConstraint,securityConstraintMapping,securityHandler,contexts,Server]; root of factory hierarchy
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 13/02/24 15:30:01 ERROR xbean.XBeanBrokerFactory: Failed to load: class path resource [activemq.xml], reason: Could not load properties; nested exception is java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | org.springframework.beans.factory.BeanInitializationException: Could not load properties; nested exception is java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.beans.factory.config.PropertyResourceConfigurer.postProcessBeanFactory(PropertyResourceConfigurer.java:78)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:663)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:638)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:407)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:64)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:52)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.xbean.XBeanBrokerFactory$1.<init>(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createApplicationContext(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createBroker(XBeanBrokerFactory.java:66)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:71)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:54)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.StartCommand.startBroker(StartCommand.java:115)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.StartCommand.runTask(StartCommand.java:74)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.ShellCommand.runTask(ShellCommand.java:148)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.ShellCommand.main(ShellCommand.java:90)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.Main.runTaskClass(Main.java:262)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.Main.main(Main.java:115)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.tanukisoftware.wrapper.WrapperSimpleApp.run(WrapperSimpleApp.java:240)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.lang.Thread.run(Thread.java:680)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | Caused by: java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.io.FileInputStream.open(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.io.FileInputStream.<init>(FileInputStream.java:120)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.io.FileInputStream.<init>(FileInputStream.java:79)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.core.io.UrlResource.getInputStream(UrlResource.java:124)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:181)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.core.io.support.PropertiesLoaderSupport.mergeProperties(PropertiesLoaderSupport.java:161)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.beans.factory.config.PropertyResourceConfigurer.postProcessBeanFactory(PropertyResourceConfigurer.java:69)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	... 28 more
+INFO   | jvm 1    | 2013/02/24 15:30:01 | ERROR: java.lang.RuntimeException: Failed to execute start task. Reason: org.springframework.beans.factory.BeanInitializationException: Could not load properties; nested exception is java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | java.lang.RuntimeException: Failed to execute start task. Reason: org.springframework.beans.factory.BeanInitializationException: Could not load properties; nested exception is java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.StartCommand.runTask(StartCommand.java:98)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.ShellCommand.runTask(ShellCommand.java:148)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.ShellCommand.main(ShellCommand.java:90)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.Main.runTaskClass(Main.java:262)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.Main.main(Main.java:115)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.tanukisoftware.wrapper.WrapperSimpleApp.run(WrapperSimpleApp.java:240)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.lang.Thread.run(Thread.java:680)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | Caused by: org.springframework.beans.factory.BeanInitializationException: Could not load properties; nested exception is java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.beans.factory.config.PropertyResourceConfigurer.postProcessBeanFactory(PropertyResourceConfigurer.java:78)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:663)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:638)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:407)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:64)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:52)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.xbean.XBeanBrokerFactory$1.<init>(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createApplicationContext(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createBroker(XBeanBrokerFactory.java:66)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:71)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:54)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.StartCommand.startBroker(StartCommand.java:115)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.StartCommand.runTask(StartCommand.java:74)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	... 16 more
+INFO   | jvm 1    | 2013/02/24 15:30:01 | Caused by: java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.io.FileInputStream.open(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.io.FileInputStream.<init>(FileInputStream.java:120)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.io.FileInputStream.<init>(FileInputStream.java:79)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.core.io.UrlResource.getInputStream(UrlResource.java:124)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:181)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.core.io.support.PropertiesLoaderSupport.mergeProperties(PropertiesLoaderSupport.java:161)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.beans.factory.config.PropertyResourceConfigurer.postProcessBeanFactory(PropertyResourceConfigurer.java:69)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	... 28 more
+INFO   | jvm 1    | 2013/02/24 15:30:01 | ERROR: java.lang.Exception: org.springframework.beans.factory.BeanInitializationException: Could not load properties; nested exception is java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | java.lang.Exception: org.springframework.beans.factory.BeanInitializationException: Could not load properties; nested exception is java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.StartCommand.runTask(StartCommand.java:99)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.ShellCommand.runTask(ShellCommand.java:148)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.AbstractCommand.execute(AbstractCommand.java:57)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.ShellCommand.main(ShellCommand.java:90)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.Main.runTaskClass(Main.java:262)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.Main.main(Main.java:115)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.lang.reflect.Method.invoke(Method.java:597)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.tanukisoftware.wrapper.WrapperSimpleApp.run(WrapperSimpleApp.java:240)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.lang.Thread.run(Thread.java:680)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | Caused by: org.springframework.beans.factory.BeanInitializationException: Could not load properties; nested exception is java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.beans.factory.config.PropertyResourceConfigurer.postProcessBeanFactory(PropertyResourceConfigurer.java:78)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:663)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:638)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:407)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:64)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.xbean.spring.context.ResourceXmlApplicationContext.<init>(ResourceXmlApplicationContext.java:52)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.xbean.XBeanBrokerFactory$1.<init>(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createApplicationContext(XBeanBrokerFactory.java:102)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.xbean.XBeanBrokerFactory.createBroker(XBeanBrokerFactory.java:66)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:71)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.broker.BrokerFactory.createBroker(BrokerFactory.java:54)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.StartCommand.startBroker(StartCommand.java:115)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.apache.activemq.console.command.StartCommand.runTask(StartCommand.java:74)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	... 16 more
+INFO   | jvm 1    | 2013/02/24 15:30:01 | Caused by: java.io.FileNotFoundException: ../../conf/credentials.properties (No such file or directory)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.io.FileInputStream.open(Native Method)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.io.FileInputStream.<init>(FileInputStream.java:120)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at java.io.FileInputStream.<init>(FileInputStream.java:79)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.core.io.UrlResource.getInputStream(UrlResource.java:124)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:181)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.core.io.support.PropertiesLoaderSupport.mergeProperties(PropertiesLoaderSupport.java:161)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	at org.springframework.beans.factory.config.PropertyResourceConfigurer.postProcessBeanFactory(PropertyResourceConfigurer.java:69)
+INFO   | jvm 1    | 2013/02/24 15:30:01 | 	... 28 more
+STATUS | wrapper  | 2013/02/24 15:30:04 | <-- Wrapper Stopped
+STATUS | wrapper  | 2013/02/24 15:30:15 | --> Wrapper Started as Console
+STATUS | wrapper  | 2013/02/24 15:30:15 | Launching a JVM...
+INFO   | jvm 1    | 2013/02/24 15:30:15 | Wrapper (Version 3.2.3) http://wrapper.tanukisoftware.org
+INFO   | jvm 1    | 2013/02/24 15:30:15 |   Copyright 1999-2006 Tanuki Software, Inc.  All Rights Reserved.
+INFO   | jvm 1    | 2013/02/24 15:30:15 | 
+INFO   | jvm 1    | 2013/02/24 15:30:15 | 
+INFO   | jvm 1    | 2013/02/24 15:30:15 | WARNING - Unable to load the Wrapper's native library 'libwrapper.jnilib'.
+INFO   | jvm 1    | 2013/02/24 15:30:15 |           The file is located on the path at the following location but
+INFO   | jvm 1    | 2013/02/24 15:30:15 |           could not be loaded:
+INFO   | jvm 1    | 2013/02/24 15:30:15 |             /Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/../../bin/macosx/libwrapper.jnilib
+INFO   | jvm 1    | 2013/02/24 15:30:15 |           Please verify that the file is readable by the current user
+INFO   | jvm 1    | 2013/02/24 15:30:15 |           and that the file has not been corrupted in any way.
+INFO   | jvm 1    | 2013/02/24 15:30:15 |           One common cause of this problem is running a 32-bit version
+INFO   | jvm 1    | 2013/02/24 15:30:15 |           of the Wrapper with a 64-bit version of Java, or vica versa.
+INFO   | jvm 1    | 2013/02/24 15:30:15 |           This is a 64-bit JVM.
+INFO   | jvm 1    | 2013/02/24 15:30:15 |           Reported cause:
+INFO   | jvm 1    | 2013/02/24 15:30:15 |             /Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/libwrapper.jnilib:  no suitable image found.  Did find:  /Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/libwrapper.jnilib: no matching architecture in universal wrapper
+INFO   | jvm 1    | 2013/02/24 15:30:15 |           System signals will not be handled correctly.
+INFO   | jvm 1    | 2013/02/24 15:30:15 | 
+INFO   | jvm 1    | 2013/02/24 15:30:16 | Java Runtime: Apple Inc. 1.6.0_41 /System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+INFO   | jvm 1    | 2013/02/24 15:30:16 |   Heap sizes: current=83008k  free=77186k  max=1040064k
+INFO   | jvm 1    | 2013/02/24 15:30:16 |     JVM args: -Dactivemq.home=../.. -Dactivemq.base=../.. -Djavax.net.ssl.keyStorePassword=password -Djavax.net.ssl.trustStorePassword=password -Djavax.net.ssl.keyStore=../../conf/broker.ks -Djavax.net.ssl.trustStore=../../conf/broker.ts -Dcom.sun.management.jmxremote -Dorg.apache.activemq.UseDedicatedTaskRunner=true -Djava.util.logging.config.file=logging.properties -Dactivemq.conf=../../conf -Dactivemq.data=../../data -Xmx1024m -Djava.library.path=../../bin/macosx/ -Dwrapper.key=Kz3_p0_LB6ihhHlt -Dwrapper.port=32000 -Dwrapper.jvm.port.min=31000 -Dwrapper.jvm.port.max=31999 -Dwrapper.pid=27313 -Dwrapper.version=3.2.3 -Dwrapper.native_library=wrapper -Dwrapper.cpu.timeout=10 -Dwrapper.jvmid=1
+INFO   | jvm 1    | 2013/02/24 15:30:16 | Extensions classpath:
+INFO   | jvm 1    | 2013/02/24 15:30:16 |   [../../lib,../../lib/camel,../../lib/optional,../../lib/web,../../lib/extra]
+INFO   | jvm 1    | 2013/02/24 15:30:16 | ACTIVEMQ_HOME: ../..
+INFO   | jvm 1    | 2013/02/24 15:30:16 | ACTIVEMQ_BASE: ../..
+INFO   | jvm 1    | 2013/02/24 15:30:16 | ACTIVEMQ_CONF: ../../conf
+INFO   | jvm 1    | 2013/02/24 15:30:16 | ACTIVEMQ_DATA: ../../data
+INFO   | jvm 1    | 2013/02/24 15:30:16 | Loading message broker from: xbean:activemq.xml
+INFO   | jvm 1    | 2013/02/24 15:30:16 | 13/02/24 15:30:16 INFO xbean.XBeanBrokerFactory$1: Refreshing org.apache.activemq.xbean.XBeanBrokerFactory$1@b07f45d: startup date [Sun Feb 24 15:30:16 EST 2013]; root of context hierarchy
+INFO   | jvm 1    | 2013/02/24 15:30:16 | 13/02/24 15:30:16 INFO v2.XBeanXmlBeanDefinitionReader: Loading XML bean definitions from class path resource [activemq.xml]
+INFO   | jvm 1    | 2013/02/24 15:30:16 | 13/02/24 15:30:16 INFO v2.XBeanXmlBeanDefinitionReader: Loading XML bean definitions from class path resource [jetty.xml]
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO config.PropertyPlaceholderConfigurer: Loading properties file from URL [file:../../conf/credentials.properties]
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO support.DefaultListableBeanFactory: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@27e32382: defining beans [org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,org.apache.activemq.xbean.XBeanBrokerService#0,securityLoginService,securityConstraint,securityConstraintMapping,securityHandler,contexts,Server]; root of factory hierarchy
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO plist.PListStore: PListStore:[/Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/../../data/localhost/tmp_storage] started
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO broker.BrokerService: Using Persistence Adapter: KahaDBPersistenceAdapter[/Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/bin/macosx/../../data/kahadb]
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO broker.BrokerService: Apache ActiveMQ 5.7.0 (localhost, ID:Andrews-MacBook-Air.local-50412-1361683817264-0:1) is starting
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO transport.TransportServerThreadSupport: Listening for connections at: tcp://Andrews-MacBook-Air.local:61616?maximumConnections=1000&wireformat.maxFrameSize=104857600
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO broker.TransportConnector: Connector openwire Started
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO transport.TransportServerThreadSupport: Listening for connections at: stomp://Andrews-MacBook-Air.local:61612?transport.closeAsync=false
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO broker.TransportConnector: Connector stomp Started
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO transport.TransportServerThreadSupport: Listening for connections at: stomp+nio://Andrews-MacBook-Air.local:61613?transport.closeAsync=false
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO broker.TransportConnector: Connector stomp+nio Started
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO server.Server: jetty-7.6.7.v20120910
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.ContextHandler: started o.e.j.s.ServletContextHandler{/,null}
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO server.AbstractConnector: Started SelectChannelConnector@0.0.0.0:61614
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO broker.TransportConnector: Connector websocket Started
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO broker.BrokerService: Apache ActiveMQ 5.7.0 (localhost, ID:Andrews-MacBook-Air.local-50412-1361683817264-0:1) started
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO broker.BrokerService: For help or more information please see: http://activemq.apache.org
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO server.Server: jetty-7.6.7.v20120910
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO support.XmlWebApplicationContext: Refreshing Root WebApplicationContext: startup date [Sun Feb 24 15:30:17 EST 2013]; root of context hierarchy
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO xml.XmlBeanDefinitionReader: Loading XML bean definitions from ServletContext resource [/WEB-INF/webconsole-embedded.xml]
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO xml.XmlBeanDefinitionReader: Loading XML bean definitions from ServletContext resource [/WEB-INF/webconsole-query.xml]
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO config.PropertyPlaceholderConfigurer: Loading properties file from URL [file:../../conf/credentials.properties]
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO support.DefaultListableBeanFactory: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@412beeec: defining beans [queueBrowser,messageQuery,queueConsumerQuery,connectionQuery,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,brokerQuery,sessionPool,connectionFactory]; root of factory hierarchy
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO web.WebConsoleStarter: ActiveMQ WebConsole initialized.
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.ContextHandler: started o.e.j.w.WebAppContext{/admin,file:/Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/webapps/admin/}
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO /admin: Initializing Spring FrameworkServlet 'dispatcher'
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO servlet.DispatcherServlet: FrameworkServlet 'dispatcher': initialization started
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO support.XmlWebApplicationContext: Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sun Feb 24 15:30:17 EST 2013]; parent: Root WebApplicationContext
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO xml.XmlBeanDefinitionReader: Loading XML bean definitions from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO support.DefaultListableBeanFactory: Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@72a60191: defining beans [handlerMapping,/createDestination.action,/deleteDestination.action,/createSubscriber.action,/deleteSubscriber.action,/sendMessage.action,/purgeDestination.action,/deleteMessage.action,/copyMessage.action,/moveMessage.action,/deleteJob.action,exceptionResolver]; parent: org.springframework.beans.factory.support.DefaultListableBeanFactory@412beeec
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.BindingBeanNameUrlHandlerMapping: Mapped URL path [/createDestination.action] onto handler '/createDestination.action'
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.BindingBeanNameUrlHandlerMapping: Mapped URL path [/deleteDestination.action] onto handler '/deleteDestination.action'
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.BindingBeanNameUrlHandlerMapping: Mapped URL path [/createSubscriber.action] onto handler '/createSubscriber.action'
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.BindingBeanNameUrlHandlerMapping: Mapped URL path [/deleteSubscriber.action] onto handler '/deleteSubscriber.action'
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.BindingBeanNameUrlHandlerMapping: Mapped URL path [/sendMessage.action] onto handler '/sendMessage.action'
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.BindingBeanNameUrlHandlerMapping: Mapped URL path [/purgeDestination.action] onto handler '/purgeDestination.action'
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.BindingBeanNameUrlHandlerMapping: Mapped URL path [/deleteMessage.action] onto handler '/deleteMessage.action'
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.BindingBeanNameUrlHandlerMapping: Mapped URL path [/copyMessage.action] onto handler '/copyMessage.action'
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.BindingBeanNameUrlHandlerMapping: Mapped URL path [/moveMessage.action] onto handler '/moveMessage.action'
+INFO   | jvm 1    | 2013/02/24 15:30:17 | 13/02/24 15:30:17 INFO handler.BindingBeanNameUrlHandlerMapping: Mapped URL path [/deleteJob.action] onto handler '/deleteJob.action'
+INFO   | jvm 1    | 2013/02/24 15:30:18 | 13/02/24 15:30:17 INFO servlet.DispatcherServlet: FrameworkServlet 'dispatcher': initialization completed in 156 ms
+INFO   | jvm 1    | 2013/02/24 15:30:18 | 13/02/24 15:30:17 INFO webapp.WebAppContext: ActiveMQ Console at http://0.0.0.0:8161/admin
+INFO   | jvm 1    | 2013/02/24 15:30:18 | 13/02/24 15:30:17 INFO handler.ContextHandler: started o.e.j.w.WebAppContext{/demo,file:/Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/webapps/demo/}
+INFO   | jvm 1    | 2013/02/24 15:30:18 | 13/02/24 15:30:18 INFO webapp.WebAppContext: Apache ActiveMQ Web Demo at http://0.0.0.0:8161/demo
+INFO   | jvm 1    | 2013/02/24 15:30:18 | 13/02/24 15:30:18 INFO handler.ContextHandler: started o.e.j.w.WebAppContext{/fileserver,file:/Users/andrew/lang/ruby/notifications/bin/apache-activemq-5.7.0/webapps/fileserver/}
+INFO   | jvm 1    | 2013/02/24 15:30:18 | 13/02/24 15:30:18 INFO webapp.WebAppContext: RESTful file access application at http://0.0.0.0:8161/fileserver
+INFO   | jvm 1    | 2013/02/24 15:30:18 | 13/02/24 15:30:18 INFO server.AbstractConnector: Started SelectChannelConnector@0.0.0.0:8161

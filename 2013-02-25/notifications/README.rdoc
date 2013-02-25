@@ -1,0 +1,18 @@
+== Notifications using Websockets
+
+A simple example using Rails, ActiveMQ, JavaScript, STOMP and Websockets.
+
+Bits of ActiveMQ are located in the ./bin directory.
+
+To send messages to the server run:
+rails runner console_chat.rb username
+
+== Links
+
+Javascript Library Used:
+
+https://github.com/jmesnil/stomp-websocket
+
+Ruby Library Used:
+
+https://github.com/stompgem/stomp
