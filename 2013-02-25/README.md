@@ -10,4 +10,4 @@ Better development with Gems - Anton's talking on development productivity gems.
 
 Summary of RubyConf
 
-Queues - ApacheMQ
+Andrew gave us a overview of notifications and queues using ActiveMQ and websockets. [Deck](https://github.com/BrisRuby/demo-notifications-using-websockets/blob/master/slides.pdf?raw=true) | [Demo App](https://github.com/BrisRuby/demo-notifications-using-websockets) 

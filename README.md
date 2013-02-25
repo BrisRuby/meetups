@@ -1,13 +1,13 @@
 # BrisRuby Meetups
-####:weather => :hot, :flooding => true
+#### :weather => "hot",  :flooding => true
 
 A repo for the Brisbane Ruby and Rails Meetup group <http://www.meetup.com/BrisRuby/>
 
 ## Meetup Ideas
 
-Got an idea for a presentation or lightning talk? Great - open an issue to let us know.
+Got an idea for a presentation or lightning talk? Great - [open an issue](https://github.com/BrisRuby/meetups/issues) and present it next meetup.
 
-Like someone's idea? Then +1 away!
+Like someone's idea and want to hear it next? Then +1 away!
 
 ## Decks & Notes
 
