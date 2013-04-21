@@ -1,0 +1,42 @@
+#!/usr/sbin/dtrace -C -Z -s
+/*
+ To run this script, please type the following command while in the same 
+ directory (or specify the full path rather than './'):
+
+   sudo ./rb_calls.dtrace -o dtrace_output.txt <pid>
+ 
+ After the output file has been generated (here, it's dtrace_output.txt but you 
+ may call it whatever you like), call up the trace document where
+ this script was exported from and choose the "DTrace Data Import..." option
+ from the "File" pulldown menu to import that data. 
+
+*/
+
+#pragma D option switchrate=1msec
+#pragma D option bufsize=25m
+#pragma D option stackindent=0
+#pragma D option quiet
+
+syscall::getpriority:entry/execname=="Instruments"/ {}
+
+BEGIN{printf("<dtrace_output_begin/>\n %-14d\n48FCF131-F3CB-4661-A268-303405D28563\n", walltimestamp);}
+
+
+
+ruby*:::method-entry/((((pid == $1))))/{
+
+this->name = strjoin(strjoin(copyinstr(arg0), "::"), copyinstr(arg1));
+        @calls[basename(copyinstr(arg2)), "method", this->name] = count(); 
+
+printf("<e> -1 0 %d %u %-14d\n%s\n%s \n</e>\n",cpu, tid, walltimestamp, this->name, stringof(copyinstr(arg2)));printf("<s>\n");ustack(128);printf("</s>\n");
+}
+
+ruby*:::cmethod-entry/((((pid == $1))))/{
+
+this->name = strjoin(strjoin(copyinstr(arg0), "::"), copyinstr(arg1));
+        @calls[basename(copyinstr(arg2)), "cmethod", this->name] = count(); 
+
+printf("<e> -1 1 %d %u %-14d\n%s\n%s \n</e>\n",cpu, tid, walltimestamp, this->name, stringof(copyinstr(arg2)));printf("<s>\n");ustack(128);printf("</s>\n");
+}
+
+
