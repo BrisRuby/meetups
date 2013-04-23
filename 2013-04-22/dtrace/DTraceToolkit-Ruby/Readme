@@ -1,0 +1,44 @@
+Ruby - DTracing Ruby
+
+   These scripts trace activity of the Ruby programming language, and
+   require the DTrace Ruby provider written by Joyent.
+
+   Currently, the DTrace Ruby provider is a seperate download either in
+   patch, source or binary form. Start with the "Ruby DTrace" link on
+   http://dtrace.joyent.com/, and after getting a version running, the
+   scripts in this directory should work.
+
+   Since the DTrace Ruby provider is under development, there is a chance
+   that it has changed slightly by the time you are reading this, causing
+   these scripts to either break or behave oddly. Firstly, check for newer
+   versions of the DTraceToolkit; if it hasn't been updated and you need
+   to use these scripts immediately, then updating them shouldn't take
+   too long. The following was the state of the provider when these scripts
+   were written - check for changes and update the scripts accordingly,
+
+	provider ruby {
+       probe method-entry(classname, methodname, filename, lineno);
+       probe method-return(classname, methodname, filename, lineno);
+       probe cmethod-entry(classname, methodname, filename, lineno);
+       probe cmethod-return(classname, methodname, filename, lineno);
+       probe require-entry(requiredfile, filename, lineno);
+       probe require-return(requiredfile, filename, lineno);
+       probe find-require-entry(requiredfile, filename, lineno);
+       probe find-require-return(requiredfile, filename, lineno);
+       probe load-entry(loadedfile, filename, lineno);
+       probe load-return(loadedfile, filename, lineno);
+       probe raise(classname, filename, lineno);
+       probe object-create(classname, filename, lineno);
+       probe array-create(length, filename, lineno);
+       probe hash-create(length, filename, lineno);
+       probe string-create(length, filename, lineno);
+       probe parse-begin(sourcefile, lineno);
+       probe parse-end(sourcefile, lineno);
+
+       // optional:
+       probe gc-mark-begin();
+       probe gc-mark-end();
+       probe gc-sweep-begin();
+       probe gc-sweep-end();
+	};
+
