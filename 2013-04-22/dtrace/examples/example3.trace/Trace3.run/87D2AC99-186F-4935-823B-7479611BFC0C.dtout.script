@@ -1,0 +1,58 @@
+
+#pragma D option switchrate=1msec
+#pragma D option bufsize=25m
+#pragma D option stackindent=0
+#pragma D option quiet
+#pragma D option stacksymbols=no
+int AppleProbeSwitch[int];
+syscall::getpriority:entry/execname=="Instruments"/ {AppleProbeSwitch[(int)arg0] = arg1;}
+
+BEGIN{
+AppleProbeSwitch[-1] = 1;
+}
+
+/*
+MARKER:0:PROBE
+*/
+
+/*
+MARKER:0:DESCRIPTOR:0
+*/
+ruby*:::method-entry/(AppleProbeSwitch[-1] == 1) && (
+/*
+MARKER:1:PREDICATE
+*/
+(pid == 5727)
+ && ( /*XRAYPREDICATELHS*/(pid == $target/*XRAYPREDICATERHS*/)))/{
+/*
+MARKER:0:SCRIPT:0
+*/
+this->name = strjoin(strjoin(copyinstr(arg0), "::"), copyinstr(arg1));
+        @calls[basename(copyinstr(arg2)), "method", this->name] = count(); 
+/*
+MARKER:0:EVENT:0
+*/
+printf("<e> -1 0 %d %u %-14d\n%s\n%s \n</e>\n",cpu, tid, walltimestamp, this->name, stringof(copyinstr(arg2)));printf("<s>\n");ustack(128);printf("</s>\n");
+}
+
+/*
+MARKER:0:DESCRIPTOR:1
+*/
+ruby*:::cmethod-entry/(AppleProbeSwitch[-1] == 1) && (
+/*
+MARKER:1:PREDICATE
+*/
+(pid == 5727)
+ && ( /*XRAYPREDICATELHS*/(pid == $target/*XRAYPREDICATERHS*/)))/{
+/*
+MARKER:0:SCRIPT:1
+*/
+this->name = strjoin(strjoin(copyinstr(arg0), "::"), copyinstr(arg1));
+        @calls[basename(copyinstr(arg2)), "cmethod", this->name] = count(); 
+/*
+MARKER:0:EVENT:1
+*/
+printf("<e> -1 1 %d %u %-14d\n%s\n%s \n</e>\n",cpu, tid, walltimestamp, this->name, stringof(copyinstr(arg2)));printf("<s>\n");ustack(128);printf("</s>\n");
+}
+
+
