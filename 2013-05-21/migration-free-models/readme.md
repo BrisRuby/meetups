@@ -21,9 +21,28 @@ SQL keyword searches aren't horrible either.  Actually, they are pretty shit.
 
 But what's the point of keeping duplicate data?  Why not One True Source to rule them all....
 
+	require 'tire'
+
+	class Twat
+		include Tire::Model::Persistence
+
+		property :author
+		property :status
+		property :created_on, :default => DateTime.now
+	end
+
 Wouldn't it be nice if we didn't even need to declare properties?  Why not instantiate a model with any hash?
 
-	Dat dada Dah....... tire/models/dynamic_persistence
+Dat dada Dah....... tire/models/dynamic_persistence
+
+	require 'tire'
+	require 'tire/model/dynamic_persistence'
+
+	class Twat 
+	  include Tire::Model::Persistence
+	  include Tire::Model::DynamicPersistence
+	end
+
 
 The ruby gem is well behind the github master so use karmi/tire-contrib for now
 
