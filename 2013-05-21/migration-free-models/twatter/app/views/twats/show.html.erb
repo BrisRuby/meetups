@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @twat.author %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @twat.status %>
+</p>
+
+<%= link_to 'Edit', edit_twat_path(@twat) %> |
+<%= link_to 'Back', twats_path %>
