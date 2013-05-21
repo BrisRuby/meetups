@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+
+gem 'minimapper'
+gem 'minimapper-extras'
+gem 'activerecord'
+gem 'sqlite3'
