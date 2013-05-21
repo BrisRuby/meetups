@@ -1,0 +1,1 @@
+Dir.glob(File.join(__dir__, "migrations/**/*.rb")).each { |migration| require migration }
