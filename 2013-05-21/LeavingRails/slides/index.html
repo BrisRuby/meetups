@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Leaving Rails - James Ottaway</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="James Ottaway">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <div class="slides">
+
+        <section>
+
+          <section>
+            <h1>Leaving Rails</h1>
+            <h4>is the grass really greener?</h4>
+          </section>
+
+          <section>
+            <h2>hi there</h2>
+            <p>my name is James</p>
+            <br/>
+            <br/>
+            <h2>i'm making <a href="http://www.forrest.io/">forrest.io</a></h2>
+            <p>who here loves ping pong?</p>
+            <br/>
+            <br/>
+            <h2>topics</h2>
+            <p>web frameworks</p>
+            <p>persistence layer patterns</p>
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <h2>about Rails...</h2>
+            <p><img src="images/rails.jpg"/></p>
+
+            <aside class="notes" data-markdown>
+              ### notes
+              - pros: popular, great community
+              - cons: learning curve
+              - it's the lazy option
+            </aside>
+          </section>
+
+          <section>
+            <h2>about magic</h2>
+            <br/>
+            <blockquote>
+              Arthur Clarke:
+              &ldquo;Any sufficiently advanced technology is indistinguishable from magic.&rdquo;
+            </blockquote>
+            <br/>
+            <blockquote>
+              Robert Carlyle:
+              &ldquo;All magic comes with a price.&rdquo;
+            </blockquote>
+
+            <aside class="notes" data-markdown>
+              ### notes
+              - rails is opaque
+              - newbie take far longer to become proficient
+            </aside>
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <h2>APIs</h2>
+
+            <ul>
+              <li>are fun</li>
+              <li>resources</li>
+              <li>versioning</li>
+              <li>content negotiation</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>just do it</h2>
+            <p><img src="images/nike.gif"/></p>
+
+            <aside class="notes" data-markdown>
+              ### notes
+              - api first
+              - walled garden vs. open ecosystem
+            </aside>
+          </section>
+
+          <section>
+            <h2>web as a platform</h2>
+            <p><img src="images/internet.png"/></p>
+
+            <aside class="notes" data-markdown>
+              ### notes
+              - google+, facebook, etc. breaking the web
+            </aside>
+          </section>
+
+          <section>
+            <h2>third party integrations</h2>
+            <p><img src="images/blocks.jpg"/></p>
+
+            <aside class="notes" data-markdown>
+              ### forrest
+              - mobile
+              - cli
+              - hubot
+              - arduino
+              - stats dashboard?
+              - ...
+            </aside>
+          </section>
+
+          <section>
+            <h2>consider your architecture</h2>
+            <p><img src="images/blueprints.jpg"/></p>
+
+            <aside class="notes" data-markdown>
+              ### notes
+              - you're forced to think
+              - this is a good thing
+            </aside>
+          </section>
+
+          <section>
+            <h2>but, buyer beware</h2>
+            <p><img src="images/unicorn.png"/></p>
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <h2>building APIs with Rails</h2>
+            <p>look ma, no hands!</p>
+            <pre><code class="sh" data-trim>
+$ rails new blog
+
+$ rails g scaffold Article title:string body:text
+            </code></pre>
+            <p>hold on!</p>
+
+            <aside class="notes" data-markdown>
+              ### notes
+              - it shouldn't be that easy
+            </aside>
+          </section>
+
+          <section>
+            <h2>mixed content types</h2>
+            <pre><code class="ruby" data-trim>
+class ArticleController < ApplicationController
+  def index
+    @articles = Article.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @articles }
+    end
+  end
+
+  def show
+    @article = Article.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @article }
+    end
+  end
+end
+            </code></pre>
+            <p>makes baby jesus cry</p>
+          </section>
+
+          <section>
+            <h2>overkill</h2>
+            <pre><code class="sh" data-trim>
+$ rake middleware
+            </code></pre>
+            <pre><code class="ruby" data-trim>
+use ActionDispatch::Static
+use Rack::Lock
+use #&lt;ActiveSupport::Cache::Strategy::LocalCache::Middleware:0x007f99758cbf70&gt;
+use Rack::Runtime
+use Rack::MethodOverride
+use ActionDispatch::RequestId
+use Rails::Rack::Logger
+use ActionDispatch::ShowExceptions
+use ActionDispatch::DebugExceptions
+use ActionDispatch::RemoteIp
+use ActionDispatch::Reloader
+use ActionDispatch::Callbacks
+use ActiveRecord::ConnectionAdapters::ConnectionManagement
+use ActiveRecord::QueryCache
+use ActionDispatch::Cookies
+use ActionDispatch::Session::CookieStore
+use ActionDispatch::Flash
+use ActionDispatch::ParamsParser
+use ActionDispatch::Head
+use Rack::ConditionalGet
+use Rack::ETag
+use ActionDispatch::BestStandardsSupport
+run RailsMiddleware::Application.routes
+            </code></pre>
+
+            <aside class="notes" data-markdown>
+              ### notes
+              - railties
+              - rake tasks
+            </aside>
+          </section>
+
+          <section>
+            <h2>what about Rails::API?</h2>
+            <p><img src="images/hammer.jpg"/></p>
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <h2>enter</h2>
+            <p><img src="images/grape.png"/></p>
+          </section>
+
+          <section>
+            <h2>example</h2>
+            <pre><code class="ruby" data-trim>
+class Blog::API < Grape::API
+  format :json
+
+  resource :articles do
+    get do
+      Article.all
+    end
+
+    get :id do
+      Article.find(params[:id])
+    end
+  end
+end
+            </code></pre>
+            
+            <pre><code data-trim>
+              run Blog::API
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>features</h2>
+
+            <ul>
+              <li>versioning</li>
+              <li>parameters (incl. validation and coercion)</li>
+              <li>headers</li>
+              <li>routes</li>
+              <li>cookies</li>
+              <li>redirects</li>
+              <li>exception handling</li>
+              <li>logging</li>
+              <li>response serialisation (incl. JSONP and CORS)</li>
+              <li>grape-entity</li>
+              <li>authentication</li>
+          </section>
+
+          <section>
+            <h2>grape-related gems</h2>
+
+            <ul>
+              <li>grape-entity</li>
+              <li>grape-entity-matchers</li>
+              <li>grape-rabl</li>
+              <li>newrelic-grape</li>
+              <li>grape-librato</li>
+              <li>grape_documenter</li>
+              <li>grape-swagger</li>
+              <li>grape-swagger-ui</li>
+              <li>grape-swagger-rails</li>
+              <li>grape_sinatra_helpers</li>
+              <li>grape-jbuilder</li>
+          </section>
+
+        </section>
+
+        <section>
+
+          <section>
+            <h2>persistence layer patterns</h2>
+
+            <ul>
+              <li>activerecord</li>
+              <li>repository</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>activerecord pattern</h2>
+            <img src="images/activerecord.gif"/>
+
+            <aside class="notes" data-markdown>
+              ### notes
+              - also datamapper and sequel
+              - the goal is noble, but the coupling is not
+            </aside>
+          </section>
+
+          <section>
+            <h2>what would DHH do?</h2>
+            <img src="images/lemmings.jpg"/>
+
+            <aside class="notes" data-markdown>
+              ### notes
+              - test::unit vs rspec
+              - sass and coffeescript
+            </aside>
+          </section>
+
+          <section>
+            <h2>it works</h2>
+            <img src="images/communism.jpg" width="600" height="450"/>
+            <p>in theory...</p>
+          </section>
+
+          <section>
+            <h2>too many responsibilities</h2>
+            <p>this is an example of an "idiomatic" approach to an ActiveRecord model</p>
+            <pre><code class="ruby" data-trim>
+class Model < ParentModel
+  include Foo::Bar
+  extend Bar::Baz
+  acts_as_authentic
+  dsl_specific_flags 
+
+  module InternalModule
+    ...
+  end
+
+  default_scope :order => 'id ASC'
+
+  belongs_to :foo
+  has_one :baz
+  has_many :bars
+  has_many :maz, :through => :daz
+  has_and_belongs_to_many :jaz
+  serialize :bars, Hash
+  ...
+
+  before_validation :foo
+  after_validation :bar
+  before_save :baz
+  before_create :taz
+  after_create :daz
+  after_save :maz
+  after_commit :laz
+  ...
+
+  validates_presence_of :id
+  validates_uniqueness_of :id
+  validates_inclusion_of :rating, :in => [1..10]
+  validates_numericality_of :taz
+  ...
+
+  accepts_nested_attributes_for :foobar
+
+  scope :by_name, :order => 'name ASC'
+  scope :lambda_scope, :lambda => { |lambda| { ... } }
+  ...
+
+  attr_reader :foobaz
+  attr_accessor :foobar
+
+  delegate :barbaz, :to => :foo
+  ...
+
+  def self.class_method
+  end
+
+  def instance_method
+  end
+
+  protected
+
+  def self.class_method
+  end
+
+  def instance_method
+  end
+
+  private
+
+  def self.class_method
+  end
+
+  def instance_method
+  end
+end
+            </code></pre>
+            <p><a href="https://gist.github.com/ltw/836525">best_model.rb</a></p>
+
+            <aside class="notes" data-markdown>
+              ### notes
+              - not recommending POROs
+              - just simple classes with simple behaviour
+            </aside>
+          </section>
+
+          <section>
+            <h2>tests hit the database</h2>
+            <pre><code class="ruby" data-trim>
+class Article < ActiveRecord::Base
+  has_many :comments
+
+  validates_presence_of :title
+  
+  validates_uniqueness_of :slug
+end
+
+Benchmark.measure { 1000.times { Article.new(title: 'Hello World').valid? } }.total
+# => 2.73 seconds
+            </code></pre>
+
+            <pre><code class="ruby" data-trim>
+class Article < ActiveRecord::Base
+  has_many :comments
+
+  validates_presence_of :title
+end
+
+Benchmark.measure { 1000.times { Article.new(title: 'Hello World').valid? } }.total
+# => 1.41 seconds
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>schema drives the model</h2>
+            <pre><code class="ruby" data-trim>
+class CreateArticlesTable < ActiveRecord::Migration
+  def change
+    create_table :articles do |t|
+      t.string :title
+      t.string :slug
+      t.text :body
+      t.boolean :published
+    end
+  end
+end
+
+class Article < ActiveRecord::Base
+  
+end
+
+puts Article.new.inspect
+
+# => &lt;Article id: nil, title: nil, slug: nil, body: nil, published: nil&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>no light at the end of this tunnel</h2>
+            <img src="images/tunnel.jpg"/>
+          </section>
+
+        </section>
+        
+        <section>
+
+          <section>
+            <h2>repository pattern</h2>
+            <img src="images/repository.png"/>
+          </section>
+
+          <section>
+            <h2>single responsibility</h2>
+            <pre><code class="ruby" data-trim>
+class Article < Repository::Entity
+  attr_accessible :title, :slug, :body, :published
+
+  validates_presence_of :title, :slug, :body
+end
+
+class ArticleRepository < Repository
+  repository_for Article
+
+  validates_uniqueness_of :slug
+end
+            </code></pre>
+
+            <pre><code class="ruby" data-trim>
+article = Article.new title: 'Hello World', slug: 'hello-world', body: 'pending'
+
+puts article.id # => nil
+
+ArticleRepository.save(article)
+
+puts article.id # => 1
+
+article.published = true
+
+ArticleRepository.update(article)
+
+puts ArticleRepository.find(article.id).published # => true
+
+ArticleRepository.destroy(article)
+
+puts article.id # => nil
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>test in isolation</h2>
+            <pre><code class="ruby" data-trim>
+class Article < Repository::Entity
+  attr_accessible :title, :slug, :body, :published
+
+  validates_presence_of :title, :slug, :body
+end
+
+class ArticleRepository < Repository
+  repository_for User
+
+  validates_uniqueness_of :slug
+end
+
+article = Article.new title: 'Hello World', slug: 'hello-world', body: 'pending'
+
+article.valid? # => true
+
+ArticleRepository.save(article)
+
+article.valid? # => false (slug is dup of previous example)
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>model is the source of truth</h2>
+            <pre><code class="ruby" data-trim>
+class Article < Repository::Entity
+  attr_accessible :title, :slug, :body, :published
+end
+
+puts Article.new.inspect
+
+# => &lt;Article id: nil, title: nil, slug: nil, body: nil, published: nil&gt;
+            </code></pre>
+            <p>(could use a gem like <a href="https://github.com/solnic/virtus">virtus</a> to manage the attributes)</p>
+          </section>
+
+          <section>
+            <h2>Ruby implementations</h2>
+            <br/>
+            <p><a href="https://github.com/braintree/curator">braintree/curator</a></p>
+            <ul class="pros_cons">
+              <li class="pro">most popular (274 stars, 7.5K downloads)</li>
+              <li class="con">only support Mongo and Riak</li>
+            </ul>
+            <br/>
+            <br/>
+            <p><a href="https://github.com/fredwu/datamappify">fredwu/datamappify</a></p>
+            <ul class="pros_cons">
+              <li class="pro">nicest syntax</li>
+              <li class="con">doesn't support associations (see <a href="https://github.com/fredwu/datamappify/blob/master/CHANGELOG.md#0100-2013-03-16">CHANGELOG.md</a>)</li>
+              <li class="con">doesn't support intelligent scopes</li>
+            </ul>
+            <br/>
+            <br/>
+            <p><a href="https://github.com/joakimk/minimapper">joakimk/minimapper</a></p>
+            <ul class="pros_cons">
+              <li class="pro">supports associations (via <a href="https://github.com/barsoom/minimapper-extras">minimapper-extras</a>)</li>
+              <li class="pro">supports scope methods in a Mapper class</li>
+              <li class="con">entity classes inherit from ActiveRecord::Base</li>
+            </ul>
+          </section>
+
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme,
+        transition: Reveal.getQueryHash().transition || 'default',
+
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    </script>
+
+  </body>
+</html>
