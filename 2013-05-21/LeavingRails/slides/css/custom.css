@@ -1,0 +1,13 @@
+ul.pros_cons {
+  list-style: none;
+}
+
+li.pro:before {
+  content: '\2713';
+  margin: 0 1em;
+}
+
+li.con:before {
+  content: '\2717';
+  margin: 0 1em;
+}
