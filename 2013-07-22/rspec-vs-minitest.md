@@ -150,10 +150,10 @@ Just like another ugly duckling, minitest comes of age.
 	# require 'nadda-niks-nothing'
 
 	describe BDD do	
-		let(:fairy_tests) { FairyTail.new }
+		let(:fairy) { Fairy.new }
 	
-		describe "when writing minitest::specs"
-			it { fairy_tests.must_be_kind_of :heaven }
+		it "beholds the beauty of specs" do
+			fairy.must_be_kind_of :happy_chappy
 		end
 	end
 
@@ -167,7 +167,7 @@ More pretty, less bloat.
 ---
 = data-x="10000" data-y="-2500" data-rotate-z="90" data-scale="5"
 
-# Segway......
+# ...The End......
 
 ---
 = data-x="10000" data-y="5000" data-scale="30"
@@ -214,7 +214,9 @@ img Fat boy
 = data-x="-8000" data-y="-7500" data-scale="20"
 
 - included with ruby
-- fast!
+- lighter
+- faster
+- better
 - eminently hackable!
 
 ---
@@ -251,10 +253,37 @@ img Fat boy
 	end
 
 ---
-= id="xx" data-x="-5000" data-y="15000" data-rotate-z="45" data-scale="5"
+= data-x="-7500" data-y="12500" data-rotate-z="45" data-scale="5"
 
+	require "test_helper"
 
-img dos esque
+	describe User do
+	  let(:user) { User.new }
+
+	  it "wont validate without params" do
+	    user.wont_be :valid?
+	  end
+	end
+	
+---
+= data-x="-2500" data-y="17500" data-rotate-z="45" data-scale="5"
+	
+	require 'test_helper'
+
+	describe UsersController, :as_current_member do
+	
+		describe '#create' do
+			it 'creates a new user' do
+			  lambda { :post, :user_params }.must_change 'User.count', +1
+			end
+		end
+	end
+
+---
+= id="more-info" data-x="2500" data-y="22500" data-rotate-z="45" data-scale="5"
+
+### More MiniTest Goodness
+#### https://github.com/blowmage/minitest-rails
 
 ---
 = id="overview" data-scale="50"

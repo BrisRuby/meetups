@@ -146,10 +146,10 @@ end
     <pre><code class='prettyprint '># require 'nadda-niks-nothing'
 
 describe BDD do 
-    let(:fairy_tests) { FairyTail.new }
+    let(:fairy) { Fairy.new }
 
-    describe "when writing minitest::specs"
-        it { fairy_tests.must_be_kind_of :heaven }
+    it "beholds the beauty of specs" do
+        fairy.must_be_kind_of :happy_chappy
     end
 end
 </code></pre></div>
@@ -161,7 +161,7 @@ end
 </div>
       <div class='step'  data-x="10000" data-y="-2500" data-rotate-z="90" data-scale="5">
     
-<h1>Segway......</h1>
+<h1>...The End......</h1>
 </div>
       <div class='step'  data-x="10000" data-y="5000" data-scale="30">
     
@@ -203,7 +203,9 @@ end
     
 <ul>
 <li>included with ruby</li>
-<li>fast!</li>
+<li>lighter</li>
+<li>faster</li>
+<li>better</li>
 <li>eminently hackable!</li>
 </ul>
 </div>
@@ -232,9 +234,34 @@ require 'minitest/rails'
   infect_an_assertion :assert_recognizes, :must_recognize
 end
 </code></pre></div>
-      <div class='step'  id="xx" data-x="-5000" data-y="15000" data-rotate-z="45" data-scale="5">
+      <div class='step'  data-x="-7500" data-y="12500" data-rotate-z="45" data-scale="5">
+    <pre><code class='prettyprint '>require "test_helper"
+
+describe User do
+  let(:user) { User.new }
+
+  it "wont validate without params" do
+    user.wont_be :valid?
+  end
+end
+</code></pre></div>
+      <div class='step'  data-x="-2500" data-y="17500" data-rotate-z="45" data-scale="5">
+    <pre><code class='prettyprint '>require 'test_helper'
+
+describe UsersController, :as_current_member do
+
+    describe '#create' do
+        it 'creates a new user' do
+          lambda { :post, :user_params }.must_change 'User.count', +1
+        end
+    end
+end
+</code></pre></div>
+      <div class='step'  id="more-info" data-x="2500" data-y="22500" data-rotate-z="45" data-scale="5">
     
-<p>img dos esque</p>
+<h3>More MiniTest Goodness</h3>
+
+<h4><a href="https://github.com/blowmage/minitest-rails">https://github.com/blowmage/minitest-rails</a></h4>
 </div>
       <div class='step'  id="overview" data-scale="50">
     
