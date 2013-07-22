@@ -7,7 +7,7 @@ html { overflow: hidden; }
 .impress-on-overview .step { opacity: 0.9; }
 
 /*  Fonts & Colours  	*/
-@font-face { font-family: 'Crafty Girls'; font-style: normal; font-weight: 400; src: local('Crafty Girls'), local('CraftyGirls'), url(craftygirls.woff) format('woff'); }
+/*@font-face { font-family: 'Crafty Girls'; font-style: normal; font-weight: 400; src: local('Crafty Girls'), local('CraftyGirls'), url(craftygirls.woff) format('woff'); }*/
 body { font-family: 'Crafty Girls', cursive, Arial, sans-serif; text-align: center; font-size: 40px; background: #FFF; color: #666; }
 h1 { font-size: 4em; }
 h2 { font-size: 3em; }
