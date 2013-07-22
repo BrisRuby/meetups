@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RSpec vs Minitest | A Testing Fairytail</title>
+    <link href="css/reset.css" rel="stylesheet" />
+    <meta name="author" content="Dave Kinkead">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="css/favicon.png" />
+    <link rel="apple-touch-icon" href="css/apple-touch-icon.png" />
+    <!-- Code Prettifier: -->
+<link href="css/highlight.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <link href="css/style.css" rel="stylesheet" />
+
+  </head>
+
+  <body>
+  <div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  </div>
+    <div id="impress">
+    <div class='step'  id="intro" data-z="50000" data-rotate-z="90" data-scale="400" >
+    
+<h1>RSpec <em>vs</em> MiniTest</h1>
+</div>
+      <div class='step'   data-z="60000" data-rotate-z="90" data-scale="100" >
+    
+<h1>A fairy tail adventure</h1>
+
+<h4><a href="http://dave.kinkead.com.au">@davekinkead</a></h4>
+</div>
+      <div class='step'  data-x="1000" data-y="1000">
+    
+<h3>Once Upon A Time...</h3>
+
+<p>In a land far, far, away...</p>
+</div>
+      <div class='step'  data-x="2000" data-y="1000">
+    
+<h2>The Kingdom didn&#39;t test</h2>
+</div>
+      <div class='step'  id="tests-yeah" data-x="2000" data-y="1000">
+    
+<p>Boo!</p>
+</div>
+      <div class='step'  id="tdd" data-x="2000" data-y="2000">
+    
+<p>Luckily, the people discovered</p>
+
+<h1>Test Driven Development</h1>
+</div>
+      <div class='step'  id="tdd-rejoice" data-x="2000" data-y="2000">
+    
+<p>There was much rejoicing.</p>
+</div>
+      <div class='step'  data-x="2000" data-y="3000" data-rotate-z="45">
+    
+<h2>But all was not well...</h2>
+
+<p>Because test unit cause them pain.  Deep, aesthetic pain.</p>
+</div>
+      <div class='step'  data-y="2000" data-rotate-z="45">
+    <pre><code class='prettyprint '>require 'test/unit'
+
+class TDD < Test::Unit::TestCase
+    def setup
+        @fairy = Fairy.new
+    end
+
+    def testUrCodeMakesMyEyesBleed
+        assert(@fairy.sees_red, true)
+    end
+
+    def teardown
+        @fairy.bite :dust
+    end
+end
+</code></pre></div>
+      <div class='step'  id="rspec" data-x="-1000" data-y="1000" data-rotate-z="45">
+    
+<h1>Enter RSpec, stage left.</h1>
+</div>
+      <div class='step'  data-x="-1500" data-y="1500" data-rotate-z="45">
+    <pre><code class='prettyprint '>require 'rspec'
+
+describe BDD do 
+    subject(:fairy) { Fairy.new }
+
+    context "when writing specs"
+        it { should weep_with_joy }
+    end
+end
+</code></pre></div>
+      <div class='step'  id="rspec-rejoice" data-x="-1500" data-y="1500" data-rotate-z="45">
+    
+<p>And there was much rejoicing.</p>
+</div>
+      <div class='step'  data-x="-2000" data-y="2000" data-rotate-z="45">
+    
+<h2>Success breeds complacency.</h2>
+
+<p>And complacency breeds bloat.  </p>
+</div>
+      <div class='step'  id="bloat" data-x="-2000" data-y="2000" data-rotate-z="45">
+    
+<p>Mmmm, Bloat.</p>
+</div>
+      <div class='step'  data-x="-2000" data-y="-1000" data-rotate-z="270">
+    
+<h2>There was a disturbance in the force.</h2>
+
+<p>The gods were not happy.</p>
+</div>
+      <div class='step'  id="dhh-angry" data-x="-2000" data-y="-1000" data-rotate-z="270">
+    
+<p>img DHH angry.</p>
+</div>
+      <div class='step'  data-x="-1000" data-y="-1000" data-rotate-z="270">
+    
+<h2>Minitest is born!</h2>
+
+<p>but not all babies are beautiful</p>
+</div>
+      <div class='step'  id="minitest-born" data-x="0" data-y="-1000" data-rotate-z="270">
+    </div>
+      <div class='step'  data-x="0" data-y="-2000" data-rotate-z="270">
+    
+<h2>But a problem remained...</h2>
+</div>
+      <div class='step'  id="eyes-bleed" data-x="0" data-y="-2000" data-rotate-z="270">
+    
+<p>img bleeding eyes</p>
+</div>
+      <div class='step'  data-x="5000" data-y="-2500" data-rotate-z="90" data-scale="5">
+    
+<p>Just like another ugly duckling, minitest comes of age. </p>
+
+<h1>Minitest::Specs</h1>
+</div>
+      <div class='step'  data-x="7500" data-y="-2500" data-rotate-z="90" data-scale="5">
+    <pre><code class='prettyprint '># require 'nadda-niks-nothing'
+
+describe BDD do 
+    let(:fairy_tests) { FairyTail.new }
+
+    describe "when writing minitest::specs"
+        it { fairy_tests.must_be_kind_of :heaven }
+    end
+end
+</code></pre></div>
+      <div class='step'  id="minitest-rejoice" data-x="7500" data-y="-2500" data-rotate-z="90" data-scale="5">
+    
+<p>img Schwing!</p>
+
+<p>More pretty, less bloat.</p>
+</div>
+      <div class='step'  data-x="10000" data-y="-2500" data-rotate-z="90" data-scale="5">
+    
+<h1>Segway......</h1>
+</div>
+      <div class='step'  data-x="10000" data-y="5000" data-scale="30">
+    
+<p>So far, I&#39;ve been heavy on metaphor but light on content.  Lets dive a little deeper....</p>
+
+<h1>RSpec</h1>
+</div>
+      <div class='step'  id="rspec-why" data-x="15000" data-y="10000" data-scale="20">
+    
+<h2>Why?</h2>
+</div>
+      <div class='step'  data-x="11000" data-y="10000" data-scale="15">
+    
+<ul>
+<li>tests are first class objects</li>
+<li>negation and self-description</li>
+<li>metadata</li>
+<li>around(:each) hooks</li>
+<li>DHH hates it</li>
+</ul>
+</div>
+      <div class='step'  data-x="20000" data-y="7000" data-scale="15" data-rotate-z="90">
+    
+<h1>Why not?</h1>
+</div>
+      <div class='step'  id="fatty" data-x="20000" data-y="7000" data-scale="15" data-rotate-z="90">
+    
+<p>img Fat boy</p>
+</div>
+      <div class='step'  data-x="-20000" data-y="-12000" data-scale="30">
+    
+<h1>MiniTest</h1>
+</div>
+      <div class='step'  id="minitest-why" data-x="-25000" data-y="-8000" data-scale="20">
+    
+<h2>Why?</h2>
+</div>
+      <div class='step'  data-x="-8000" data-y="-7500" data-scale="20">
+    
+<ul>
+<li>included with ruby</li>
+<li>fast!</li>
+<li>eminently hackable!</li>
+</ul>
+</div>
+      <div class='step'  data-x="-2000" data-y="-7500" data-scale="15">
+    <pre><code class='prettyprint '>#infect_an_assertion
+</code></pre></div>
+      <div class='step'  data-x="-15000" data-y="5000" data-rotate-z="45" data-scale="20">
+    
+<h1>Rails Integration</h1>
+</div>
+      <div class='step'  data-x="-17500" data-y="2500" data-rotate-z="45" data-scale="5">
+    <pre><code class='prettyprint '># test/test_helper.rb
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
+require 'minitest/autorun'
+require 'minitest/rails'
+</code></pre></div>
+      <div class='step'  data-x="-12500" data-y="7500" data-rotate-z="45" data-scale="5">
+    <pre><code class='prettyprint '>module MiniTest::Expectations
+  infect_an_assertion :assert_redirected_to, :must_redirect_to
+  infect_an_assertion :assert_template, :must_render_template
+  infect_an_assertion :assert_response, :must_respond_with
+  infect_an_assertion :assert_difference, :must_change
+  infect_an_assertion :assert_no_difference, :wont_change
+  infect_an_assertion :assert_recognizes, :must_recognize
+end
+</code></pre></div>
+      <div class='step'  id="xx" data-x="-5000" data-y="15000" data-rotate-z="45" data-scale="5">
+    
+<p>img dos esque</p>
+</div>
+      <div class='step'  id="overview" data-scale="50">
+    
+      </div>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>
+    
