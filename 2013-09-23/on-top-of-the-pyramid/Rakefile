@@ -1,0 +1,21 @@
+namespace :selenium_webdriver do
+  task :google do
+    require_relative './examples/selenium-webdriver/google.rb'
+  end
+
+  task :etsy do
+    require_relative './examples/selenium-webdriver/etsy.rb'
+  end
+end
+
+namespace :watir_webdriver do
+  task :demo do
+    require_relative './examples/watir-webdriver/demo.rb'
+  end
+end
+
+namespace :page_objects do
+  task :etsy do
+    require_relative './examples/page-objects/etsy.rb'
+  end
+end
