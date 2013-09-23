@@ -1,0 +1,34 @@
+- testing pyramid
+  - unit/integration
+  - acceptance/functional/system/etc.
+    - black box
+    - automate that shit!
+- selenium webdriver
+  - components
+    - selenium = family of stuff. automates browsers!
+    - ide = record/playback (selenese)
+    - client api = java, c#, ruby, python
+    - remote control = http server behind the client api, injects JS into the browser instance
+    - webdriver (aka 2.0) = native browser driver libraries. succeeds RC.
+    - grid = manages array of browser instances, shares instances with test runners
+  - drivers
+    - firefox
+    - chrome
+    - internet explorer
+    - opera
+    - android
+    - iPhone
+  - examples
+    - google
+    - etsy
+- watir webdriver
+  - watir = nicer API than Selenium's client API
+  - watir-webdriver = wrapper around selenium-webdriver
+  - generated from [html spec](http://www.whatwg.org/specs/web-apps/current-work/)
+- page objects
+  - abstraction between test and selenium webdriver
+  - simple wrapper, or fancy DSL
+  - make assertions, or just accessor methods
+- test augmentation
+  - ryan boucher
+  - thoughtworks p2 magazine
