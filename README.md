@@ -1,5 +1,6 @@
 # BrisRuby Meetups
-#### :weather => "hot",  :flooding => true
+
+#### weather: 'hot', flooding: true
 
 A repo for the Brisbane Ruby and Rails Meetup group <http://www.meetup.com/BrisRuby/>
 
