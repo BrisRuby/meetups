@@ -20,4 +20,4 @@
 
 [Chris](https://github.com/codesoda) gave us [an overview]() of how Rails has performed against over 4000 Hackers at [Bugcrowd](https://bugcrowd.com/).
 
-[Nigel](https://github.com/nigelr) automatically tracked his tasks in Ruby Mine and uTrack. 
+[Nigel](https://github.com/nigelr) automatically tracked his tasks in Ruby Mine and YouTrack. 
