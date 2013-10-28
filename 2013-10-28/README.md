@@ -8,7 +8,7 @@
 
 ## Presentations
 
-[Andrew](https://github.com/mootpointer) from [Ninefold](http://ninefold.com/) presented a detailed and suitably [gif filled overview]() of Rails performance with caching, [jmeter](http://jmeter.apache.org/), caching, [flood.io](https://flood.io/) and yet more caching.
+[Andrew](https://github.com/mootpointer) from [Ninefold](http://ninefold.com/) talked about [application performance and happiness](performance-happiness/), along with the Ninefold platform and the tests they ran.
 
 ## Lightning Talks
 
