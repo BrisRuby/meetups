@@ -14,4 +14,4 @@ ActionHack is no more :(
 
 [Matt Connolly](https://github.com/mattconnolly) share the low down on Errbit for app error tracking .
 
-Half time drinks graciously sponsored by [NineFold](http://www.rivercitylabs.net/)  
+Half time drinks graciously sponsored by [NineFold](https://ninefold.com/)  
