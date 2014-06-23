@@ -1,0 +1,17 @@
+# June 2014 Meetup
+
+
+## News
+
+ActionHack is no more :(
+
+[Brisbane Code Club](http://www.meetup.com/Brisbane-Coder-Club/) is a fortnightly get together at [Rivercity Labs](http://www.rivercitylabs.net/) to hack on your own projects and share your wisdom and be inspired.
+
+
+## Talks
+
+[Jamie Cook](https://github.com/jamiecook) regaled us with his talk on [Interfacing Ruby to C++](https://github.com/jamiecook/brisruby_cplusplus).
+
+[Matt Connolly](https://github.com/mattconnolly) share the low down on Errbit for app error tracking .
+
+Half time drinks graciously sponsored by [NineFold](http://www.rivercitylabs.net/)  
