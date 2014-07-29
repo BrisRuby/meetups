@@ -6,7 +6,7 @@
 By Brian Lane, Product Owner, [Ninefold](https://ninefold.com/)
 
 ### Testing Apps with the Application Driver pattern
-By [Jonathon Abbot](https://github.com/jonathonMA) and [Nick Chmielewski](https://github.com/hackling)
+By [Jonathon Abbott](https://github.com/jonathonMA) and [Nick Chmielewski](https://github.com/hackling)
 
 ### An Introduction to Validations
 By [Tom Ridge](https://github.com/ridget), two red kites
