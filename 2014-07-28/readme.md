@@ -1,4 +1,4 @@
-## BrisRuby 
+## BrisRuby
 
 # July 2014 Meetup
 
