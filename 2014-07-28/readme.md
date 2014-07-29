@@ -5,6 +5,8 @@
 ### Why Docker is important for Rails
 By Brian Lane, Product Owner, [Ninefold](https://ninefold.com/)
 
+Slide deck on [Google Docs](https://docs.google.com/presentation/d/1mz0QchIrz-03rlgJanFvHg0-ILp0xAXKKeEbLf6ovDo)
+
 ### Testing Apps with the Application Driver pattern
 By [Nick Chmielewski](https://github.com/hackling)
 
