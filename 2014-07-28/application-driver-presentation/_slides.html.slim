@@ -1,0 +1,106 @@
+section
+  h1 Application Driver
+  h3 cucumber/capybara/interactors
+  ol
+    li Write one test
+    li Drive out business logic
+    li Drive out HTTP/UI layer
+  p
+    small
+      ' Created by
+      a href="http://github.com/JonathonMA" Jonathon M. Abbott
+      ' /
+      a href="http://twitter.com/JonathonMA"
+        ' @JonathonMA
+      ' &
+      a href="http://github.com/hackling" Nick C.
+      ' /
+      a href="http://twitter.com/hackling"
+        ' @hackling
+
+section
+  h1 What is an Application Driver
+
+  p.fragment A DSL in the domain of your application
+  p.fragment Drives the business logic
+  p.fragment ALSO drives your website
+
+section
+  h1 How (cucumber)
+
+  ul
+    li Write your test with gherkin, use the language of the domain (cucumber)
+    li.fragment Write your step definitions, as commands or queries on the app driver (ruby)
+    li.fragment Implement your app driver, connecting up directly to your business objects (ruby / activerecord / interactors)
+    li.fragment Implement the web version of your app driver, connecting up to your website (capybara)
+
+section
+  section
+    h1 Example: Gherkin
+    pre[contenteditable style="padding: 20px;"]
+      | Scenario: Adding Inventory
+          Given the testing marketplace exists
+          And the following cards have been acquired
+            | name          | set | condition | quantity |
+            | Air Elemental | LEA | NM        | 2        |
+          Then the stock count should be
+            | name          | set | condition | quantity |
+            | Air Elemental | LEA | NM        | 5        |
+
+  section
+    h1 Example: Step Definition
+    pre[contenteditable style="padding: 20px;"]
+      | When(/^the following cards have been acquired$/) do |table|
+          app.increase_stock table.hashed_by_card_descriptor
+        end
+        Then(/^the stock count should be$/) do |table|
+          table.rows.each do |descriptor, quantity|
+            expect(app.details_about(descriptor).quantity).to eq quantity
+          end
+        end
+
+  section
+    h1 Example: Direct app driver
+    pre[contenteditable style="padding: 20px;"]
+      | class DirectAppDriver
+          def increase_stock adjustments
+            IncreaseSKUStock.perform adjustments: rehash_by_sku_id(adjustments)
+          end
+          def details_about descriptor
+            descriptor.sku
+          end
+        end
+
+  section
+    h1 Example: Web app driver
+    pre[contenteditable style="padding: 20px;"]
+      | class WebAppDriver
+          delegate :increase_stock, to: :admin_driver
+        end
+        class AdminDriver
+          def increase_stock adjustments
+            admin_session do
+              adjustments.each do |descriptor, count|
+                details_about(descriptor).increase_stock_by count
+                card.submit_add_stock
+              end
+            end
+          end
+          def details_about descriptor
+            admin_session do
+              visit_card(name: descriptor.name)
+                .query_for(descriptor.set, descriptor.condition)
+            end
+          end
+        end
+
+section
+  h1 Gotchas
+
+  ul
+    li VCR
+    li Rails environments
+    li HTTP-only concerns
+
+section
+  h1 DEMO TIME
