@@ -13,6 +13,10 @@ By [Nick Chmielewski](https://github.com/hackling)
 ### An Introduction to Validations
 By [Tom Ridge](https://github.com/ridget), two red kites
 
+Slide deck on [Slide Share](http://www.slideshare.net/tomridge1/validations-101)
+
+Code on [github](https://github.com/ridget/validators_app)
+
 Drinks & Dinner were graciously sponsored by [Ninefold - the easier way to deploy & host rails apps](https://ninefold.com/).
 
 ## Upcoming
