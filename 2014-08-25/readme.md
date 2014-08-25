@@ -7,8 +7,11 @@
 **Creating QRCodes on the fly + Stripe.com retrospectives**  
 by Darren James
 
-**Rails Presenters**  
+**[Rails Presenters](http://www.slideshare.net/tomridge1/rails-presenters)**  
 By Tom Ridge, two red kites
+
+Code for Presenters on [github](https://github.com/ridget/presenters_app), be
+sure to check out stage-3 for the final result
 
 **How to build a Ruby Gem**  
 by Dave Kinkead 
