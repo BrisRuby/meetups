@@ -1,4 +1,4 @@
-## BrisRuby 
+## BrisRuby
 
 # July 2014 Meetup
 
@@ -8,7 +8,9 @@ By Brian Lane, Product Owner, [Ninefold](https://ninefold.com/)
 Slide deck on [Google Docs](https://docs.google.com/presentation/d/1mz0QchIrz-03rlgJanFvHg0-ILp0xAXKKeEbLf6ovDo)
 
 ### Testing Apps with the Application Driver pattern
-By [Nick Chmielewski](https://github.com/hackling)
+By [Jonathon Abbott](https://github.com/jonathonMA) and [Nick Chmielewski](https://github.com/hackling)
+
+[Presentation](https://github.com/BrisRuby/meetups/tree/master/2014-07-28/application-driver-presentation)
 
 ### An Introduction to Validations
 By [Tom Ridge](https://github.com/ridget), two red kites

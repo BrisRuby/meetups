@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><title>App Driver &mdash; brisruby</title><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" /><link href="css/reveal.min.css" rel="stylesheet" /><link href="css/theme/solarized.css" id="theme" rel="stylesheet" /><link href="lib/css/zenburn.css" rel="stylesheet" /><script type="text/javascript">if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+}</script></head><body><div class="reveal"><div class="slides"><section><h1>Application Driver</h1><h3>cucumber/capybara/interactors</h3><ol><li>Write one test</li><li>Drive out business logic</li><li>Drive out HTTP/UI layer</li></ol><p><small>Created by <a href="http://github.com/JonathonMA">Jonathon M. Abbott</a>/ <a href="http://twitter.com/JonathonMA">@JonathonMA </a>& <a href="http://github.com/hackling">Nick C.</a>/ <a href="http://twitter.com/hackling">@hackling </a></small></p></section><section><h1>What is an Application Driver</h1><p class="fragment">A DSL in the domain of your application</p><p class="fragment">Drives the business logic</p><p class="fragment">ALSO drives your website</p></section><section><h1>How (cucumber)</h1><ul><li>Write your test with gherkin, use the language of the domain (cucumber)</li><li class="fragment">Write your step definitions, as commands or queries on the app driver (ruby)</li><li class="fragment">Implement your app driver, connecting up directly to your business objects (ruby / activerecord / interactors)</li><li class="fragment">Implement the web version of your app driver, connecting up to your website (capybara)</li></ul></section><section><section><h1>Example: Gherkin</h1><pre contenteditable="" style="padding: 20px;">Scenario: Adding Inventory
+  Given the testing marketplace exists
+  And the following cards have been acquired
+    | name          | set | condition | quantity |
+    | Air Elemental | LEA | NM        | 2        |
+  Then the stock count should be
+    | name          | set | condition | quantity |
+    | Air Elemental | LEA | NM        | 5        |</pre></section><section><h1>Example: Step Definition</h1><pre contenteditable="" style="padding: 20px;">When(/^the following cards have been acquired$/) do |table|
+  app.increase_stock table.hashed_by_card_descriptor
+end
+Then(/^the stock count should be$/) do |table|
+  table.rows.each do |descriptor, quantity|
+    expect(app.details_about(descriptor).quantity).to eq quantity
+  end
+end</pre></section><section><h1>Example: Direct app driver</h1><pre contenteditable="" style="padding: 20px;">class DirectAppDriver
+  def increase_stock adjustments
+    IncreaseSKUStock.perform adjustments: rehash_by_sku_id(adjustments)
+  end
+  def details_about descriptor
+    descriptor.sku
+  end
+end</pre></section><section><h1>Example: Web app driver</h1><pre contenteditable="" style="padding: 20px;">class WebAppDriver
+  delegate :increase_stock, to: :admin_driver
+end
+class AdminDriver
+  def increase_stock adjustments
+    admin_session do
+      adjustments.each do |descriptor, count|
+        details_about(descriptor).increase_stock_by count
+        card.submit_add_stock
+      end
+    end
+  end
+  def details_about descriptor
+    admin_session do
+      visit_card(name: descriptor.name)
+        .query_for(descriptor.set, descriptor.condition)
+    end
+  end
+end</pre></section></section><section><h1>Gotchas</h1><ul><li>VCR</li><li>Rails environments</li><li>HTTP-only concerns</li></ul></section><section><h1>DEMO TIME</h1></section></div></div><script src="lib/js/head.min.js"></script><script src="js/reveal.min.js"></script><script type="text/javascript">// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Parallax scrolling
+    // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+    // parallaxBackgroundSize: '2100px 900px',
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+    ]
+});</script></body></html>
