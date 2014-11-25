@@ -20,6 +20,7 @@ by [@daphsta](https://github.com/daphsta)
 
 I will be sharing how we at LocalSearch use Form Objects in our Rails projects and how it has helped us decouple objects from ActiveRecord models which prevented the tendency of models to perform multiple responsibilities.
 
+[Form Objects Repo] (https://github.com/daphsta/music_form_object) | [Slides] (http://www.slideshare.net/DaphneChan1/form-objects-41995193)
 
 ## Abject Orientated Programming in Ruby
 by [@davekinkead](https://github.com/davekinkead)
