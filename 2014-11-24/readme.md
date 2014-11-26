@@ -8,6 +8,7 @@ by [@elliotthilaire](https://github.com/elliotthilaire)
 
 Continuing on from last months 'lightning talk' meetup, I will give an introduction to using the Dragonfly gem for processing images / anything on the fly.
 
+[Slides](https://github.com/elliotthilaire/brisruby-dragonfly-slides)
 
 ## Integrating a style guide into your workflow
 by [@hackling](https://github.com/hackling)
