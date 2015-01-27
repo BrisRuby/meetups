@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <section id="info">
+    {{ site.description }}
+  </section>
+
+  {% include next-meetup.html %}
+
+  <p>Where / When</p>
+
+  <h3>Latest Awesome sauce</h3>
+
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div>
