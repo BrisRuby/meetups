@@ -5,12 +5,17 @@ layout: default
 <div class="home">
 
   <section id="info">
-    {{ site.description }}
+    <p>{{ site.description }}</p>
   </section>
 
-  {% include next-meetup.html %}
+  <section id="next-meetup">
+    <h3>Upcoming Meetups</h3>
+    {% include forthcoming.html %}
+  </section>
 
-  <p>{{ site.location }}</p>
+  <section>
+    <p>{{ site.location }}</p>
+  </section>
 
   <h3>Latest Awesome sauce</h3>
 

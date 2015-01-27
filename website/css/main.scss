@@ -15,9 +15,9 @@ $spacing-unit:     30px;
 
 $text-color:       #111;
 $background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
+$brand-color:      #E0115F;
 
-$grey-color:       #828282;
+$grey-color:       #666;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);
 
@@ -39,6 +39,29 @@ $on-laptop:        800px;
     }
 }
 
+section {
+  padding: 1rem 0;
+}
+
+.post {
+  margin-bottom: 1rem;
+
+  .title {
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-bottom: 0;
+  }
+}
+
+.list {
+  list-style: none;
+  margin-left: 1rem;
+}
+
+.meetups {
+  .post {
+  }
+}
 
 
 // Import partials from `sass_dir` (defaults to `_sass`)
