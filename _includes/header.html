@@ -1,6 +1,9 @@
 <nav>
-  <span class="logo">BrisRuby</span>
+  <span class="nav"><a href="/"><i class="fa fa-diamond"></i>
+</a></span>
+  <ul>
   {% for page in site.pages %} 
-  <span class="nav"><a href="{{ page.url }}">{{ page.title }}</a></span>
+  <li class="nav"><a href="{{ page.url }}">{{ page.title }}</a></li>
   {% endfor %}
+  </ul>
 </nav>

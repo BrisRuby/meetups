@@ -6,12 +6,15 @@
 
 
 // Our variables
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
+$font-family:  "Vollkorn",serif;
+$font-size:    16px;
 
+$background-color:  #FEFEFE;
+$font-color:        #555;
+$primary-color:     #CB0063;
 
-$on-palm:          600px;
-$on-laptop:        800px;
+$on-palm:           600px;
+$on-laptop:         800px;
 
 
 
@@ -28,10 +31,17 @@ $on-laptop:        800px;
     }
 }
 
+@mixin vertical-rhythm {
+  margin-bottom: 1rem;
+}
+
+@mixin block-width {
+  max-width: 800px;
+  margin: auto;
+}
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-// @import
-//         "base",
-//         "layout",
-//         "syntax-highlighting"
-// ;
+@import
+        "base",
+        "syntax-highlighting"
+;
