@@ -34,6 +34,7 @@ ul, ol {
 
 pre {
   padding: 0 1rem;
+  overflow-x: scroll;
 }
 
 a {
@@ -48,17 +49,45 @@ a {
   }
 }
 
-nav {
-  text-align: center;
+//--- Menu ---//
+
+#menu {
+  position: fixed;
+
+  .trigger {
+    font-size: 3rem;
+    position: fixed;
+    top: 1rem;
+    left: 2rem;
+  }
+
+  li {
+    margin-left: 1.25rem;
+  }
+}
+
+//--- Pages ---//
+
+.list {
+  li {
+    margin-bottom: 2rem;
+  }
 }
 
 .page-content {
   margin-top: 100px;
 }
 
+.post.meta {
+  margin-top: -1.25rem;
+  color: lighten($font-color, 15%);
+  font-size: 1rem;
+}
+
 article {
   h1, h2, h3, h4, h5 {
     font-size: 1.2rem;
+    line-height: 1;
     text-align: center;
     margin: 3rem auto;
   }

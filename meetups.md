@@ -10,8 +10,4 @@ permalink: /meetups/
 
 Visit the [meetup page](http://www.meetup.com/Brisruby/) for more details
 
-{% for meetup in site.meetups reversed %}
-
-  {% include meetup.html %}
-
-{% endfor %}
+{% include meetups.html %}
