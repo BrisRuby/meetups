@@ -2,7 +2,7 @@
 layout: post
 title:  The rSpec vs Minitest Smackdown
 author: Dave Kinkead
-status: forthcoming
+status: published
 meetup: Jan 2015
 ---
 
