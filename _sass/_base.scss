@@ -52,6 +52,7 @@ a {
 //--- Menu ---//
 
 #menu {
+
   position: fixed;
 
   .trigger {
@@ -64,6 +65,15 @@ a {
   li {
     margin-left: 1.25rem;
   }
+
+  .fa-diamond {
+    transition: 300ms ease all;
+
+    &:hover {
+      transform: rotate(-15deg);
+    }
+  }
+
 }
 
 //--- Pages ---//
