@@ -9,7 +9,7 @@ layout: default
   </section>
 
   <section id="next-meetup">
-    <h3>Upcoming Meetups</h3>
+    <h3>Upcoming Talks</h3>
     {% include forthcoming.html %}
   </section>
 
@@ -17,7 +17,10 @@ layout: default
     <p>{{ site.location }}</p>
   </section>
 
-  <h3>Latest Awesome sauce</h3>
+  <section>
+    <h3>Recent Ramblings</h3>
+    {% include posts.html %}
+  </section>
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 

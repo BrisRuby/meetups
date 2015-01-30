@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  rSpec vs Minitest Smackdown
+title:  The rSpec vs Minitest Smackdown
 author: Dave Kinkead
 status: forthcoming
 meetup: Jan 2015
@@ -8,14 +8,22 @@ meetup: Jan 2015
 
 # Minitest vs rSpec
 
-Notes for our head-to-head talk.  Each plus for one should equate to a minus for the other (ie they are relative).
+Brush your teeth, eat your greens, test your code.  We all know that testing is important.  We are all good little vegemites and drink the TDD/BDD/RDD koolaid.  But what testing framework should the discerning Rubyist use?
 
-Please complete before Monday!
+While two most popular [testing frameworks][toolbox] by a long way are rSpec and Minitest, it's fair to say that which is better is a source of friction in the ruby community.  Note DHH's [in no way ironic complaint about bleeding eyes](https://twitter.com/dhh/status/52807321499340800).
+
+Or on rSpecs phallus shaped friend...
+
+> Don’t use Cucumber unless you live in the magic kingdom of non-programmers-writing-tests (and send me a bottle of fairy dust if you’re there!)
+>
+> -- DHH https://signalvnoise.com/posts/3159-testing-like-the-tsa
+
+[toolbox]: https://www.ruby-toolbox.com/categories/testing_frameworks
+
+My personally? I've never used rSpec.  As a late comer to the Ruby world (ie Ruby 1.9 & Rails 3), Minitest with it's lovely spec syntax has been all I have ever needed.  So why would you use Minitest over rSpec? 
 
 
-## Minitest
-
-### + Simplicity
+### Simplicity
 
 Minitest is part of the ruby standard library which means you don't need to install any gems and setup is as easy as a single require line.
 
@@ -37,7 +45,9 @@ The [codebase itself][minitest] is also relatively tiny. The core module is just
 [minitest]: https://github.com/seattlerb/minitest
 
 
-### + Choice of Style
+RSpec on the other had is not so simple
+
+### Choice of Style
 
 Minitest gives you a great deal of stylistic choice.  You can use the traditional assert style of testing or the spec style DSL.  This is because Minitest::Spec is just a collection of aliases for Minitest::Assertions with a little sprinkling of syntactic sugar include `it`, `let`, 'subject`, and specify'.
 
@@ -62,7 +72,7 @@ You can mix and match these as you like but why would you. Hey, we're Rubyists. 
     end
 
 
-### + Extensibility 
+### Extensibility 
 
 Minitest is also incredibly simple to extend.  The base methods include (with corresponding wont, assert, and refute methods): 
 
@@ -88,8 +98,10 @@ Minitest is also incredibly simple to extend.  The base methods include (with co
 The standard library also includes Mocks, Stubs, Expectations, and Parallelisation.  Beyond the standard library however, exists a rich ecosystem of extensions - Rails, Capybara, Chef, metadata, spec-context, Growl etc, or my personal favourite - minitest/emoji - which poops failures to your terminal.
 
 
-### - Hooks
+### Hooks
 
 So what then are the negatives?  For me, the only negatives are the lack of hooks compared to rSpec.  Minitest offers the `before` and `after` hooks but these act the same as rSpec's before :all.  Neither does Minitest offer an `around` hook.
 
 Of course, these typically only affect performance during complex tests which can be mitigated somewhat by the lazy loading offered by `let`.
+
+http://tenderlovemaking.com/2015/01/23/my-experience-with-minitest-and-rspec.html?utm_source=rubyweekly&utm_medium=email

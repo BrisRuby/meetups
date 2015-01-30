@@ -7,9 +7,19 @@ description: >
 location: >
   Our meetups are held at the Toowong Library on the fourth Tuesday of every month.  Talks start at 6pm, intermission is around 7pm, and dinner from 9pm.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+permalink: /:title
+
+url: "http://brisruby.org" # the base hostname & protocol for your site
 twitter_username: brisruby
 github_username:  brisruby
+
+collections:
+  meetups:
+    output: true
+    permalink: /meetups/:path
+  people:
+    output: true
+    permalink: /people/:path
 
 # Build settings
 markdown: kramdown

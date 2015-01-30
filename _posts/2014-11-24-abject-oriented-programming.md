@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  Abject Oriented Programming for the Rubyist
-meetup: Nov 2014
-status: archive
+author: Dave Kinkead
+status: published
 ---
 
 Abject Oriented Programming (Abject-O) is a set of best practices that promotes code reuse and ensures programmers are producing code that can be used in production for a long time.  For too long, the beauty of ruby has been sullied by the misguided follies of Gamma & his cronies.  Abject rectifies this by finally bringing Abject-O to Ruby in a snapply DSL.
