@@ -6,7 +6,8 @@
 
 
 // Our variables
-$font-family:  "Vollkorn",serif;
+$font-family: 'Vollkorn', Georgia, Times, serif;
+$header-font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 $font-size:    16px;
 
 $background-color:  #FEFEFE;
@@ -15,7 +16,6 @@ $primary-color:     #CB0063;
 
 $on-palm:           600px;
 $on-laptop:         800px;
-
 
 
 // Using media queries with like this:
