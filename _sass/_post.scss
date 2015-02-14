@@ -1,0 +1,24 @@
+//--- post ---//
+
+.post-header {
+  text-align: center;
+}
+
+.post-header-title {
+  font-size:2rem;
+}
+
+.post-header-meta {
+  margin-top: -1rem;
+  color: lighten($font-color, 15%);
+  font-size: 1rem;
+}
+
+.post-content {
+  h1, h2, h3, h4, h5 {
+    font-size: 1.2rem;
+    line-height: 1;
+    //text-align: center;
+    margin: 4rem auto 2rem;
+  }
+}

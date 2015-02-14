@@ -1,8 +1,14 @@
-<nav id="menu">
-<span class="trigger"><a href="/"><i class="fa fa-diamond" title="BrisRuby"></i></a></span>
-  <ul>
+<nav class="header">
+  <span class="header-icon">
+	<a href="/">
+	  <i class="fa fa-diamond" title="BrisRuby"></i>
+	</a>
+  </span>
+  <ul class="header-menu">
     {% for page in site.pages %} 
-    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+   	  <li class="header-menu-item">
+   	  	<a href="{{ page.url }}">{{ page.title }}</a>
+   	  </li>
     {% endfor %}
   </ul>
 </nav>

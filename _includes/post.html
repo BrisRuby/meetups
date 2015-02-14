@@ -1,4 +1,15 @@
-<li class="post item {{post.categories}}">
-  <h2 class="title"><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h2>
-  <span class="author meta">by {{ post.author }}</span>  <span class="date meta">on {{ post.date | date: "%d %b %Y" }}</span>
+<li class="post">
+  <header class="post-header">
+    <h3 class="post-header-title">
+    	<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </h3>
+    <p class="post-header-meta">
+    	{{ post.date | date: "%b %-d, %Y" }}
+    	  {% if post.author %}
+    	   • {{ post.author }}
+    	  {% endif %}
+    	{% if post.meta %}
+    	  • {{ post.meta }}
+    	{% endif %}</p>
+  </header>
 </li>

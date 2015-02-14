@@ -1,0 +1,20 @@
+//--- header ---//
+
+.header {
+  background-color:grey;
+}
+
+.header-icon {
+
+  font-size: 3rem;
+  position: fixed;
+  top: 1rem;
+  left: 2rem;
+
+  transition: 300ms ease all;
+  
+  &:hover {
+    transform: rotate(-15deg);
+  }
+
+}
