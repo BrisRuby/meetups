@@ -36,13 +36,13 @@ layout: default
   <hr />
   <div class="post-navigation-left">
     {% if page.previous.url %}
-      <a href="{{page.previous.url}}">&laquo; {{page.previous.title}}</a>
+      <a href="{{page.previous.url | prepend: site.baseurl }}">&laquo; {{page.previous.title}}</a>
     {% endif %}
   </div>
 
   <div class="post-navigation-right">
     {% if page.next.url %}
-      <a href="{{page.next.url}}">{{page.next.title}} &raquo; </a>
+      <a href="{{page.next.url | prepend: site.baseurl }}">{{page.next.title}} &raquo; </a>
     {% endif %}
   </div>
 </div> 
