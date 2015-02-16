@@ -20,6 +20,7 @@ layout: default
 
   {% if page.status == 'published' %}
   <footer class="post-footer">
+    <h2>About the author</h2>
     {% for person in site.people %}
       {% if person.name == page.author %}
         {% include person.html %}
