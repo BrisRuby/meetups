@@ -13,9 +13,21 @@ layout: default
           • {{ page.meta }}
         {% endif %}</p>
   </header>
+  
   <article class="post-content">
     {{ content }}
   </article>
+
+  {% if page.status == 'published' %}
+  <footer class="post-footer">
+    {% for person in site.people %}
+      {% if person.name == page.author %}
+        {% include person.html %}
+      {% endif %}
+    {% endfor %}
+  </footer>
+  {% endif %}
+  
 </div>
 
 

@@ -1,9 +1,7 @@
 ---
 layout: page
-title: People
+title: The Crew
 permalink: /people/
 ---
-
-# The BrisRuby Crew
 
 {% include people.html %}

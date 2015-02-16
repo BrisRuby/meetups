@@ -1,8 +1,5 @@
 <ul class="people list">
   {% for person in site.people %}
-    <li class="person">
-      <img src="{{ person.picture }}" alt="{{ person.name }}" class="mugshot" />
-      {{ person.content }}
-    </li>
+  {% include person.html %}
   {% endfor %}
 </ul>
