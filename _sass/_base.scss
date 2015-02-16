@@ -63,6 +63,24 @@ hr {
   margin:2em;
 }
 
+//--- begin sticky-footer ---//
+
+// use flexbox to make footer sticky
+// http://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+
+body {
+  display: flex;
+  min-height: 98vh;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
+//--- end sticky-footer ---//
+
+
 // highlight.js code highlighting
 .hljs {
   font-size: 1rem;
