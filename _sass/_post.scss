@@ -1,11 +1,33 @@
+
+//--- post-summary ---//
+
+.post-summary {
+  text-align:center;
+}
+
+.post-summary-title {
+   
+}
+
+.post-summary-meta {
+   margin-top: -1rem;
+}
+
+
 //--- post ---//
+
+.post {
+  
+}
 
 .post-header {
   text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
 }
 
 .post-header-title {
-  font-size:2rem;
+  font-size: 2rem;
 }
 
 .post-header-meta {
@@ -14,10 +36,8 @@
 }
 
 .post-content {
-  h1, h2, h3, h4, h5 {
-    font-size: 1.2rem;
-    line-height: 1;
-    //text-align: center;
-    margin: 4rem auto 2rem;
-  }
+  
 }
+
+
+

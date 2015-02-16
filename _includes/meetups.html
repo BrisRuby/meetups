@@ -1,14 +1,13 @@
-<ul class="meetup-list">
+<ul>
   {% for meetup in site.meetups reversed %}
-  <li class="meetup-list-item">
-  	<hr />
-	<header class="meetup-header">
-	  <h2 class="meetup-header-title">{{ meetup.title }}</h2>
-	  <p class="meetup-header-meta">  {{ meetup.meetup }}</p>
-	</header>
-    <div class="meetup-content">
-      {{ meetup.content }}
-    </div>
-  </li> 
+    <li>
+  	  <header class="post-header">
+  	    <h2 class="post-header-title">{{ meetup.title }}</h2>
+  	    <p class="post-header-meta">{{ meetup.meetup }}</p>
+  	  </header>
+      <div class="post-content">
+        {{ meetup.content }}
+      </div>
+    </li> 
   {% endfor %}
 </ul>

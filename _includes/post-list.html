@@ -1,7 +1,7 @@
 <ul class="post-list">
   {% for post in site.posts %}
     {% if post.status == 'published' %}
-      {% include post.html %}
+      {% include post-summary.html %}
     {% endif %}
   {% endfor %}
 </ul>

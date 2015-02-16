@@ -1,9 +1,9 @@
-<li class="post">
-  <header class="post-header">
-    <h3 class="post-header-title">
+<li>
+  <div class="post-summary">
+    <h3 class="post-summary-title">
     	<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     </h3>
-    <p class="post-header-meta">
+    <p class="post-summary-meta">
     	{{ post.date | date: "%b %-d, %Y" }}
     	  {% if post.author %}
     	   • {{ post.author }}
