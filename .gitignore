@@ -1,5 +1,6 @@
 .DS_Store
 
+*.swp
 *.o
 *.so
 
@@ -8,3 +9,4 @@
 
 _site
 
+.sass-cache/

@@ -1,10 +1,8 @@
 ---
-layout: default
+layout: page
 title: Meetups
 permalink: /meetups/
 ---
-
-# Meetups
 
 {{ site.location }}
 

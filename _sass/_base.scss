@@ -1,7 +1,8 @@
 *, *:before, *:after {
     box-sizing: border-box;
 }
-div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
     margin: 0px;
     padding: 0px;
 }
@@ -21,6 +22,10 @@ h1, h2, h3, h4, h5, p, blockquote, ul, ol, pre {
   @include block-width;
   @include vertical-rhythm;
   font-size: 1.2rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $header-font-family;
 }
 
 ul, ol {
@@ -49,46 +54,16 @@ a {
   }
 }
 
-//--- Menu ---//
-
-#menu {
-  position: fixed;
-
-  .trigger {
-    font-size: 3rem;
-    position: fixed;
-    top: 1rem;
-    left: 2rem;
-  }
-
-  li {
-    margin-left: 1.25rem;
-  }
-}
-
-//--- Pages ---//
-
-.list {
-  li {
-    margin-bottom: 2rem;
-  }
+hr {
+  margin-top:2em;
+  width: 4rem;
 }
 
 .page-content {
-  margin-top: 100px;
+  margin:2em;
 }
 
-.post.meta {
-  margin-top: -1.25rem;
-  color: lighten($font-color, 15%);
+// highlight.js code highlighting
+.hljs {
   font-size: 1rem;
-}
-
-article {
-  h1, h2, h3, h4, h5 {
-    font-size: 1.2rem;
-    line-height: 1;
-    text-align: center;
-    margin: 3rem auto;
-  }
 }

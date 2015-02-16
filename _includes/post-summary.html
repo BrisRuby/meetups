@@ -1,0 +1,15 @@
+<li>
+  <div class="post-summary">
+    <h3 class="post-summary-title">
+    	<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    </h3>
+    <p class="post-summary-meta">
+    	{{ post.date | date: "%b %-d, %Y" }}
+    	  {% if post.author %}
+    	   • {{ post.author }}
+    	  {% endif %}
+    	{% if post.meta %}
+    	  • {{ post.meta }}
+    	{% endif %}</p>
+  </header>
+</li>

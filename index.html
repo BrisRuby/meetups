@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Home
 ---
 
 <div class="home">
@@ -13,15 +14,13 @@ layout: default
     {% include forthcoming.html %}
   </section>
 
-  <section>
+  <section id="location">
     <p>{{ site.location }}</p>
   </section>
 
-  <section>
+  <section id="posts">
     <h3>Recent Ramblings</h3>
-    {% include posts.html %}
+    {% include post-list.html %}
   </section>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>
