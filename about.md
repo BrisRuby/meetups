@@ -8,4 +8,4 @@ permalink: /about/
 
 {{ site.location }}
 
-People List here...
+google map here
