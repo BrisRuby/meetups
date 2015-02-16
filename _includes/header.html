@@ -1,14 +1,8 @@
 <nav class="header">
-  <span class="header-icon">
-	<a href="/">
-	  <i class="fa fa-diamond" title="BrisRuby"></i>
-	</a>
-  </span>
+  <a class="header-icon" href="/"><i class="fa fa-diamond" title="BrisRuby"></i></a>
   <ul class="header-menu">
-    {% for page in site.pages %} 
-   	  <li class="header-menu-item">
-   	  	<a href="{{ page.url }}">{{ page.title }}</a>
-   	  </li>
-    {% endfor %}
+    <li class="header-menu-item"><a href="{{ "/about" | prepend: site.baseurl }}">About</a></li>
+    <li class="header-menu-item"><a href="{{ "/blog" | prepend: site.baseurl }}">Blog</a></li>
+    <li class="header-menu-item"><a href="{{ "/meetups" | prepend: site.baseurl }}">Meetups</a></li>
   </ul>
 </nav>

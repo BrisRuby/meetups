@@ -1,33 +1,21 @@
 //--- header ---//
 
 .header {
-
+  text-align:center;
+  background-color:grey;
 }
 
 .header-menu {
-  //text-align:center;
-  //padding-top:1.5rem;
-  //padding-bottom:1rem;
-  //padding-left:5rem;
-  //padding-right:5rem;
-
-  @include outer-container;
-}
-
-.header-menu-item {
-  display:inline;
-    @include span-columns(1);
-  @include shift(2);
-
-
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 0;
 }
 
 .header-icon {
 
+  //display: inline;
   font-size: 3rem;
-  position: fixed;
-  top: 1rem;
-  left: 2rem;
+
 
   transition: 300ms ease all;
   
@@ -35,4 +23,9 @@
     transform: rotate(-15deg);
   }
 
+}
+
+.header-menu-item {
+  display: inline;
+  padding: 1rem;
 }
