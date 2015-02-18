@@ -36,7 +36,17 @@
 }
 
 .post-content {
-  
+  margin-bottom: 5rem;
+}
+
+.post-footer {
+  margin: 0 auto;
+  margin-top: 4rem;
+  list-style: none;
+
+  .person {
+    border-bottom: none;
+  }
 }
 
 

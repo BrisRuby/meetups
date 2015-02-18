@@ -18,7 +18,7 @@ html {
   border-top: 5px solid $primary-color;
 }
 
-h1, h2, h3, h4, h5, p, blockquote, ul, ol, pre { 
+h1, h2, h3, h4, h5, p, blockquote, ul, ol, pre, .post-footer { 
   @include block-width;
   @include vertical-rhythm;
   font-size: 1.2rem;
@@ -38,8 +38,32 @@ ul, ol {
 }
 
 pre {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
   padding: 0 1rem;
   overflow-x: scroll;
+}
+
+blockquote {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+
+  &:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 10em;
+    float: left;
+    line-height: 0.1;
+    margin-right: 1rem;
+    margin-left: -2rem;
+    margin-top: 5rem;
+    vertical-align: -0.4em;
+  }
+  p {
+    margin-left: 3rem;
+    color: lighten($font-color, 15%);
+  }
 }
 
 a {
