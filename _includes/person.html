@@ -1,4 +1,20 @@
 <li class="person">
-  <img src="{{ person.picture }}" alt="{{ person.name }}" class="mugshot" />
+  <div class="img-box">
+    <img src="{{ person.picture }}" alt="{{ person.name }}" class="mugshot" />
+    <div class="icons">
+    {% if person.github %}
+      <a href="#"><i class="fa fa-github"></i></a>
+    {% endif %}
+    {% if person.twitter %}
+      <a href="#"><i class="fa fa-twitter"></i></a>
+    {% endif %}
+    {% if person.email %}
+      <a href="#"><i class="fa fa-envelope"></i></a>
+    {% endif %}
+    {% if person.website %}
+      <a href="#"><i class="fa fa-home"></i></a>
+    {% endif %}        
+    </div>
+  </div>
   {{ person.content }}
 </li>

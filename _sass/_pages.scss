@@ -1,6 +1,52 @@
 /* CSS for specific page adjustments */
 
-.home section {
-  text-align: center;
-  margin-bottom: 3rem;
+.home {
+  h1 {
+    font-size: 4rem;
+  }
+
+  section {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+}
+
+.people.list {
+  .person {
+    border-bottom: 1px solid #EEE;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+    min-height: 10rem;
+
+    a {
+      color: lighten($font-color, 25%);
+    
+      &:hover {
+        color: $primary-color;
+      }
+    }
+
+    i {
+      font-size: 1.1rem;
+    }
+
+    .img-box {
+      width: 6rem;
+      display: inline;
+      float: left;
+      padding-right: 1rem;
+
+      img {
+        margin-top: 0.25rem;
+        width: 5rem;
+        height: auto;
+        border-radius: 5px;
+      }
+    }
+
+    p {
+      margin-left: 7rem;
+      margin-bottom: 0.75rem;
+    }
+  }
 }
