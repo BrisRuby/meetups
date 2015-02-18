@@ -76,24 +76,24 @@ You can mix and match these as you like but why would you. Hey, we're Rubyists. 
 
 Minitest is also incredibly simple to extend.  The base methods include (with corresponding wont, assert, and refute methods): 
 
-  - :must_be
-  - :must_be_close_to
-  - :must_be_empty
-  - :must_be_instance_of
-  - :must_be_kind_of
-  - :must_be_nil
-  - :must_be_same_as
-  - :must_be_silent
-  - :must_be_within_delta
-  - :must_be_within_epsilon
-  - :must_equal
-  - :must_include
-  - :must_match
-  - :must_output
-  - :must_raise
-  - :must_respond_to
-  - :must_send
-  - :must_throw
+    :must_be
+    :must_be_close_to
+    :must_be_empty
+    :must_be_instance_of
+    :must_be_kind_of
+    :must_be_nil
+    :must_be_same_as
+    :must_be_silent
+    :must_be_within_delta
+    :must_be_within_epsilon
+    :must_equal
+    :must_include
+    :must_match
+    :must_output
+    :must_raise
+    :must_respond_to
+    :must_send
+    :must_throw
 
 The standard library also includes Mocks, Stubs, Expectations, and Parallelisation.  Beyond the standard library however, exists a rich ecosystem of extensions - Rails, Capybara, Chef, metadata, spec-context, Growl etc, or my personal favourite - minitest/emoji - which poops failures to your terminal.
 
@@ -104,4 +104,7 @@ So what then are the negatives?  For me, the only negatives are the lack of hook
 
 Of course, these typically only affect performance during complex tests which can be mitigated somewhat by the lazy loading offered by `let`.
 
-http://tenderlovemaking.com/2015/01/23/my-experience-with-minitest-and-rspec.html?utm_source=rubyweekly&utm_medium=email
+
+## Update
+
+An apropos post by Aaron Paterson this week [http://tenderlovemaking.com/2015/01/23/my-experience-with-minitest-and-rspec.html](http://tenderlovemaking.com/2015/01/23/my-experience-with-minitest-and-rspec.html).
