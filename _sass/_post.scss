@@ -17,12 +17,7 @@
 //--- post ---//
 
 .post {
-  li { 
-    list-style-position: inside;
-    list-style: disc;
-    margin-left: 2rem;
-  }
-  
+
 }
 
 .post-header {
@@ -42,6 +37,11 @@
 
 .post-content {
   margin-bottom: 5rem;
+  article li { 
+    list-style-position: inside;
+    list-style: disc;
+    margin-left: 2rem;
+  }
 }
 
 .post-footer {
