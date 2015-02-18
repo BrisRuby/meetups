@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Blog
-permalink: /blog/
+title: Talks
+permalink: /talks/
 ---
 
 {% include post-list.html %}
