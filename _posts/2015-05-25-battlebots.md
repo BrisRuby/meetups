@@ -2,7 +2,7 @@
 layout: post
 title:  BattleBots!
 author: Dave Kinkead
-status: forthcoming
+status: published
 meetup: May 2015
 ---
 
