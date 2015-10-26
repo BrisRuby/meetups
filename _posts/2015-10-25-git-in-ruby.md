@@ -336,22 +336,58 @@ Thankfully, commits are straight up text as per their output!
     Git.read("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
 
     module Git
-      def self.history(commit)
+      def self.parent(commit)
         Git.read commit
       end
     end
 
-    p Git.history("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
+    p Git.parent("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
+
 
 ## Writing Commits
 
+Commiting is like taking a snapshot - typically from the index.
+
+We haven't talked much about the index yet but it is very similar to a tree for the root directory.  You add files to the index with `git add filename` and can view it with `git ls-files -s`
+
+For simplicity, we will assume the index is the same as the root directory and commit that.
+
+Commiting then, involves writing a tree from the index, creating a commit object, and updating the refs.
+
+
+    module Git
+      def self.commit(message)
+        tree = Git.save :tree, Git.build_tree
+        commit = "tree #{tree}\nparent \nauthor \ncommitter \n\n#{message}\n"
+      end
+    end
+
+    p Git.commit "hello"
+
+
+Update ORIG_HEAD to last commit
 
 ## The Tag
 
-
 ## Branching
 
+Create a branch by setting the current commit to `.git/refs/heads/branchname`
 
+Update the HEAD
+Checkout a commit from branch
+
+## Checkout
+
+Update the HEAD to `ref: refs/heads/gh-pages`
+Update the working DIR
 
 ## Merging
 
+Git.read
+Obj.
+Obj.write
+Git.write :type, content
+Git.add
+Git.hash
+Git.commit
+Git.log
