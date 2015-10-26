@@ -201,3 +201,123 @@ Git also looks up a file optimistically but we wont implement that just yet.  Th
     # => "I can't believe it's not Git!"
 
 ---
+
+## The Tree
+
+Blobs are just the SHA1 addressed content so they don't contain any meta data like actual filename or permissions.
+
+This is where Tree objects come in.  Trees are like posix directories in that they contain data about leaves - other trees and blobs.  They look like this.
+
+    # 100644 blob 83ca550b885011f19e7ee36fe840252f9e334f9d    hello.txt
+    # 040000 tree 1a80d3bf201288206919102ac3267f6414f8489d    posts
+
+The top level tree begins in the directory whereever the git repo resides.
+
+---
+
+## Tree Format
+
+Git is nothing but consistent about it's inconsistencies so the display representation is unfortunately different from the data structure.  The contents of a tree object look like:
+
+> MODE - SPACE - FILENAME - NULL_BYTE - BINARY_OBJECT_HASH
+
+Because git mixes text and binary data in the tree content, we need a way to go from a 40 character SHA1 to a 20 byte representation of it.
+
+It turns out, we can just treat each 2 char pair as a hex value.
+
+
+    module Git
+      def self.hex_to_bin(hash)
+        hash.scan(/../).map { |x| x.hex.chr }.join
+      end
+
+      def self.bin_to_hex(hash)
+        hash.unpack('H*').first
+      end
+    end
+
+
+    Git.hex_to_bin "83ca550b885011f19e7ee36fe840252f9e334f9d"
+    # => "\x83\xCAU\v\x88P\x11\xF1\x9E~\xE3o\xE8@%/\x9E3O\x9D"
+
+    Git.bin_to_hex "\x83\xCAU\v\x88P\x11\xF1\x9E~\xE3o\xE8@%/\x9E3O\x9D"
+    # => "83ca550b885011f19e7ee36fe840252f9e334f9d"
+
+
+## Reading Trees
+
+To read a tree, we need to parse its contents.  There is probably a better way but we'll go this with a regex for now and add a method to display the result like Git.
+
+
+    module Git
+      def self.read_tree(contents)
+        leaves = []
+        contents.gsub /(\d+) (.+?)\x00(.+?)(?=$|100|400)/ do |match|
+          leaves.push({mode: $1, name: $2, sha: Git.bin_to_hex($3)})
+        end
+        leaves
+      end
+
+      def self.display_tree(hash)
+        Git.read(hash).map do |leaf|
+          "%06d" % leaf[:mode] + " #{leaf[:mode].to_i > 100000 ? 'blob' : 'tree'} #{leaf[:sha]} #{leaf[:name]}"
+        end
+      end
+    end
+
+    Git.display_tree "e629cb2a5967c458b98f73ded0d8d38359dcca82"
+    $ git cat-file -p e629cb
+
+
+## Writing Trees
+
+In normal usage, Git will write trees from the index. We won't bother implementing the index here but will instead assume that we are tracking everything in the working directory.  
+
+Instead, we'll pass git a directory from which it should recursively build a tree.  To make life easy, we'll also ignore hidden files & directories.
+
+
+    module Git
+      def self.build_tree(dir=Dir.pwd)
+        leaves = []
+        Dir.foreach(dir) do |file|
+          stat = File::Stat.new("#{dir}/#{file}")
+          if stat.directory?
+            leaves.push({mode: stat.mode, name: file, sha: Git.save(:tree, Git.build_tree("#{dir}/#{file}"))}) unless File.basename(file)[0] == '.'
+          else
+            contents = File.read("#{dir}/#{file}") 
+            leaves.push({mode: stat.mode, name: file, sha: Git.save(:blob, contents)})
+          end
+        end
+        Git.format_tree leaves
+      end
+
+      def self.format_tree(leaves)
+        leaves.map {|leaf| "#{sprintf "%o", leaf[:mode]} #{leaf[:name]}\x00#{Git.hex_to_bin leaf[:sha]}" }.join
+      end
+    end
+
+
+This is the same as adding everything to the index and writing that.
+
+    Git.save(:tree, Git.build_tree)
+
+    $ git add -A | git write-tree
+
+
+## The Commit
+
+
+## Reading Commits
+
+
+## Writing Commits
+
+
+## The Tag
+
+
+## Branching
+
+
+## Merging
+
