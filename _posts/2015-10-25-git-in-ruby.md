@@ -306,9 +306,34 @@ This is the same as adding everything to the index and writing that.
 
 ## The Commit
 
+Commits are objects that point to a root tree and other commits.  This is how histories are created.
+
+Each commit, except for the first commit, points to one or more parent commits forming a directed acyclical graph.
+
+Commits also contain metadata about the author, committer, and time.
+
+
+    # commit ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66
+    # tree c5d1bcbbd958b1cf13d561552e051ecfc235a11d
+    # parent 86483d4f1ef4c00a4a00000d35d01432341d7fa9
+    # author Dave Kinkead <dave@kinkead.com.au> 1445860464 +1000
+    # committer Dave Kinkead <dave@kinkead.com.au> 1445860464 +1000
+    # 
+    #     Add implmentation of trees
+
 
 ## Reading Commits
 
+Thankfully, commits are straight up text as per their output!
+
+
+    module Git
+      def self.read_commit(content)
+        content
+      end
+    end
+
+    p Git.read("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
 
 ## Writing Commits
 
