@@ -333,7 +333,15 @@ Thankfully, commits are straight up text as per their output!
       end
     end
 
-    p Git.read("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
+    Git.read("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
+
+    module Git
+      def self.history(commit)
+        Git.read commit
+      end
+    end
+
+    p Git.history("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
 
 ## Writing Commits
 
@@ -342,6 +350,7 @@ Thankfully, commits are straight up text as per their output!
 
 
 ## Branching
+
 
 
 ## Merging
