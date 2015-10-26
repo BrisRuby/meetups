@@ -66,7 +66,20 @@ Objects are made up of a file name, a header, and content, and are a combination
 
 The header is simply the object type, followed by a space, the content's size in bytes, and finally a null byte. 
 
-> TYPE - SPACE - SIZE - NULL_BYTE 
+
+    module Git
+      class Obj
+        def initialize(content)
+          @type = :blob
+          @content = content
+        end
+
+        def header
+          "#{@type.to_s} #{@content.bytesize}\x00"
+        end
+      end
+    end
+
 
 The file name is just the SHA1 has of the header and object contents, and when the object is saved, the contents are compressed.
 
@@ -89,13 +102,24 @@ This can be done manually with `git hash-object` or in our Ruby implementation a
       def self.header(type, content)
         "#{type.to_s} #{content.bytesize}\x00"
       end
+
+      def self.hashy(content)
+        Git::Obj.new(content).hash
+      end
+    end
+
+    module Git
+      class Obj
+        def hash
+          Digest::SHA1.hexdigest header + @content
+        end
+      end
     end
 
 
 Let's see how this works in comparison to git.
 
-
-    Git.hash :blob, "I'm doing git in Ruby!\n"
+    Git.hashy "I'm doing git in Ruby!\n"
     # => ad666ec7873d557801655cde86cb1911d7931c92
 
     $ echo "I'm doing git in Ruby!" | git hash-object --stdin
@@ -146,11 +170,27 @@ To save space, git compresses the file header & contents.  We can implement this
       end
     end
 
+    module Git
+      class Obj
+        def write
+          dir, file = Git.sha_to_path hash
+
+          unless File.exists? file
+            FileUtils.mkdir_p dir
+            File.open(file, 'w+') do |f| 
+              f.write Zlib::Deflate.deflate(header(@type, @content) << @content)
+            end
+          end
+
+          hash
+        end
+      end
+    end
+
 
 We can test this against Git.
 
-
-    Git.save :blob, "I can't believe it's not Git!\n"
+    Git::Obj.new("I can't believe it's not Git!\n").write
     # => cb1842a3899d41b01feb5543eb3faf3afe65cfb0
 
     $ git cat-file -p cb1842a
@@ -164,8 +204,22 @@ Reading objects is just the reverse of saving them.
 
 Given a sha1 hash, we determine the path and filename, unzip the content, and then display it based on object type.  
 
-We'll look at how to read type specific content shortly.
 
+    module Git
+      def self.display(hash)
+        dir, file = sha_to_path hash
+        head, *content = Zlib::Inflate.inflate(File.read file).split "\x00"
+        type, size = head.split " "
+        Git.send "read_#{type}", content.join("\x00")
+      end
+
+      def self.find(hash)
+        dir, file = sha_to_path hash
+        head, *content = Zlib::Inflate.inflate(File.read file).split "\x00"
+        type, size = head.split " "
+        Git:: "read_#{type}", content.join("\x00")
+      end
+    end
 
     module Git
       def self.read(hash)
@@ -175,6 +229,8 @@ We'll look at how to read type specific content shortly.
         Git.send "read_#{type}", content.join("\x00")
       end
     end
+
+
 
 ---
 
@@ -336,22 +392,48 @@ Thankfully, commits are straight up text as per their output!
     Git.read("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
 
     module Git
-      def self.history(commit)
-        Git.read commit
+      def self.history(sha)
+        commit = Git.read sha
+        parent = commit.scan(/parent [a-g0-9]{40}/).last.split(' ').last
+        p parent
+        commit << Git.history(parent)
       end
     end
 
-    p Git.history("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
+    #p Git.history("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
+
 
 ## Writing Commits
 
+
+Write a tree
+
+Create a commit
+
+Update ORIG_HEAD to last commit
 
 ## The Tag
 
 
 ## Branching
 
+Create a branch by setting the current commit to `.git/refs/heads/branchname`
 
+Update the HEAD
+Checkout a commit from branch
+
+## Checkout
+
+Update the HEAD to `ref: refs/heads/gh-pages`
+Update the working DIR
 
 ## Merging
 
+Git.read
+Obj.
+Obj.write
+Git.write :type, content
+Git.add
+Git.hash
+Git.commit
+Git.log
