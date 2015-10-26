@@ -178,3 +178,26 @@ We'll look at how to read type specific content shortly.
 
 ---
 
+## The Blob
+
+Blobs represent file contents are the most common object type in Git.  
+
+They are simply the compressed object header and file contents so nothing else needs to be implmented.
+
+
+    module Git
+      def self.read_blob(contents)
+        contents
+      end
+    end
+
+
+Git also looks up a file optimistically but we wont implement that just yet.  This means we'll need to give our Ruby code the full hash.
+
+    Git.read "cb1842a3899d41b01feb5543eb3faf3afe65cfb0" 
+    # => "I can't believe it's not Git!\n"
+
+    $ git cat-file -p cb1842
+    # => "I can't believe it's not Git!"
+
+---
