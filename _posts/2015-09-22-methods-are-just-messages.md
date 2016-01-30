@@ -94,16 +94,14 @@ Great. But what can you actually use passing-a-block-with-a-message for?  Lots i
 
     module Enumerable
       def every_nth(n)
-        counter = 0
-        each do |enum|
-          counter += 1
-          yield enum if counter % n == 0
+        each_with_index do |enum, index|
+          yield enum if (index + 1) % n == 0
         end
       end
     end
 
 
-Now there's a little Ruby magic at work here.  Inside `every_nth`, we send `each` to `self` with a block that counts the enumerations and passes control to the message block if the enumeration is evenly divisible by `n`.  Yeps, the block we pass to `each` is yielding to the block passed to `every_nth`. Ruby is meta.
+Now there's a little Ruby magic at work here.  Inside `every_nth`, we send `each_with_index` to `self` with a block that counts the enumerations and passes control to the message block if the enumeration is evenly divisible by `n`.  Yeps, the block we pass to `each` is yielding to the block passed to `every_nth`. Ruby is meta.
 
 And because we monkey patched `Enumerable`, `every_nth` is available to all objects mixin `Enumerable` like ranges and arrays.
 
