@@ -69,15 +69,24 @@ The header is simply the object type, followed by a space, the content's size in
 
     module Git
       class Obj
-        def initialize(content)
+        def initialize(content=nil)
+          parse content
+        end
+
+        def parse(content)
           @type = :blob
-          @content = content
+          @content = content || ''
         end
 
         def header
           "#{@type.to_s} #{@content.bytesize}\x00"
         end
       end
+
+      class Blob < Obj; end
+      class Tree < Obj; end
+      class Commit < Obj; end
+      class Tag < Obj; end      
     end
 
 
@@ -95,20 +104,6 @@ This can be done manually with `git hash-object` or in our Ruby implementation a
     require 'digest/sha1'
 
     module Git
-      def self.hash(type, content)
-        Digest::SHA1.hexdigest "#{header(type, content)}#{content}"
-      end
-
-      def self.header(type, content)
-        "#{type.to_s} #{content.bytesize}\x00"
-      end
-
-      def self.hashy(content)
-        Git::Obj.new(content).hash
-      end
-    end
-
-    module Git
       class Obj
         def hash
           Digest::SHA1.hexdigest header + @content
@@ -117,9 +112,16 @@ This can be done manually with `git hash-object` or in our Ruby implementation a
     end
 
 
-Let's see how this works in comparison to git.
+Let's create a top level API and see how this works in comparison to Git itself.
 
-    Git.hashy "I'm doing git in Ruby!\n"
+
+    module Git
+      def self.hash(content)
+        Git::Obj.new("I'm doing git in Ruby!\n").hash
+      end
+    end
+
+    Git.hash "I'm doing git in Ruby!\n"
     # => ad666ec7873d557801655cde86cb1911d7931c92
 
     $ echo "I'm doing git in Ruby!" | git hash-object --stdin
@@ -155,30 +157,14 @@ To save space, git compresses the file header & contents.  We can implement this
     require 'fileutils'
 
     module Git
-      def self.save(type, content)
-        sha = hash type, content
-        dir, file = sha_to_path sha
-
-        unless File.exists? file
-          FileUtils.mkdir_p dir
-          File.open(file, 'w+') do |f| 
-            f.write Zlib::Deflate.deflate(header(type, content) << content)
-          end
-        end
-
-        sha
-      end
-    end
-
-    module Git
       class Obj
-        def write
+        def save
           dir, file = Git.sha_to_path hash
 
           unless File.exists? file
             FileUtils.mkdir_p dir
             File.open(file, 'w+') do |f| 
-              f.write Zlib::Deflate.deflate(header(@type, @content) << @content)
+              f.write Zlib::Deflate.deflate(header << @content)
             end
           end
 
@@ -188,49 +174,52 @@ To save space, git compresses the file header & contents.  We can implement this
     end
 
 
-We can test this against Git.
+Testing this against Git, we can see how it performs.
 
-    Git::Obj.new("I can't believe it's not Git!\n").write
+    Git::Obj.new("I can't believe it's not Git!\n").save
     # => cb1842a3899d41b01feb5543eb3faf3afe65cfb0
 
     $ git cat-file -p cb1842a
     # => "I can't believe it's not Git!"
 
----
 
 ## Reading Objects
 
 Reading objects is just the reverse of saving them.  
 
-Given a sha1 hash, we determine the path and filename, unzip the content, and then display it based on object type.  
+Given a sha1 hash, we find it determine the path and filename, unzip the content, and then display it based on object type.  
 
 
     module Git
-      def self.display(hash)
-        dir, file = sha_to_path hash
-        head, *content = Zlib::Inflate.inflate(File.read file).split "\x00"
-        type, size = head.split " "
-        Git.send "read_#{type}", content.join("\x00")
-      end
+      class Obj
+        def self.find(sha)
+          dir, file = Git.sha_to_path sha
+          head, *content = Zlib::Inflate.inflate(File.read file).split "\x00"
+          type, size = head.split " "
+          Git.const_get("#{type.capitalize}").new content.join("\x00")
+        end
 
-      def self.find(hash)
-        dir, file = sha_to_path hash
-        head, *content = Zlib::Inflate.inflate(File.read file).split "\x00"
-        type, size = head.split " "
-        Git:: "read_#{type}", content.join("\x00")
-      end
-    end
-
-    module Git
-      def self.read(hash)
-        dir, file = sha_to_path hash
-        head, *content = Zlib::Inflate.inflate(File.read file).split "\x00"
-        type, size = head.split " "
-        Git.send "read_#{type}", content.join("\x00")
+        def show
+          @content
+        end
       end
     end
 
 
+We will also add the method `show` to our API
+
+
+    module Git
+      def self.show(sha)
+        Git::Obj.find(sha).show
+      end
+    end
+
+    Git.show "cb1842a3899d41b01feb5543eb3faf3afe65cfb0" 
+    # => "I can't believe it's not Git!\n"
+
+    $ git cat-file -p cb1842a3899d41b01feb5543eb3faf3afe65cfb0
+    # => "I can't believe it's not Git!"
 
 ---
 
@@ -238,23 +227,16 @@ Given a sha1 hash, we determine the path and filename, unzip the content, and th
 
 Blobs represent file contents are the most common object type in Git.  
 
-They are simply the compressed object header and file contents so nothing else needs to be implmented.
+They are simply the compressed object header and file contents.  This is the same as the default so nothing else needs to be implmented.
 
 
     module Git
-      def self.read_blob(contents)
-        contents
+      class Blob < Obj
       end
     end
 
-
-Git also looks up a file optimistically but we wont implement that just yet.  This means we'll need to give our Ruby code the full hash.
-
-    Git.read "cb1842a3899d41b01feb5543eb3faf3afe65cfb0" 
-    # => "I can't believe it's not Git!\n"
-
-    $ git cat-file -p cb1842
-    # => "I can't believe it's not Git!"
+    Git::Blob.new("Why am I so ugly :(\n").save
+    # => "b7537519a566c40d554f7b599ec4ff2b418c1df3"
 
 ---
 
@@ -262,10 +244,12 @@ Git also looks up a file optimistically but we wont implement that just yet.  Th
 
 Blobs are just the SHA1 addressed content so they don't contain any meta data like actual filename or permissions.
 
-This is where Tree objects come in.  Trees are like posix directories in that they contain data about leaves - other trees and blobs.  They look like this.
+This is where Tree objects come in.  Trees are like posix directories in that they contain data about leaves - other trees and blobs.  They look like this:
+
 
     # 100644 blob 83ca550b885011f19e7ee36fe840252f9e334f9d    hello.txt
     # 040000 tree 1a80d3bf201288206919102ac3267f6414f8489d    posts
+
 
 The top level tree begins in the directory whereever the git repo resides.
 
@@ -273,13 +257,13 @@ The top level tree begins in the directory whereever the git repo resides.
 
 ## Tree Format
 
-Git is nothing but consistent about it's inconsistencies so the display representation is unfortunately different from the data structure.  The contents of a tree object look like:
+Git is nothing but consistent about it's inconsistencies so the display representation of a tree is different from the data structure.  What's more, the contents of a tree include both ACSII and binary data.
 
-> MODE - SPACE - FILENAME - NULL_BYTE - BINARY_OBJECT_HASH
 
-Because git mixes text and binary data in the tree content, we need a way to go from a 40 character SHA1 to a 20 byte representation of it.
+    # MODE - SPACE - FILENAME - NULL_BYTE - BINARY_OBJECT_HASH
 
-It turns out, we can just treat each 2 char pair as a hex value.
+
+This means we will need a helper to convert from a 40 character SHA1 to a 20 byte representation of it, and back again.  Luckily, this is nothing more than treating each 2 char ASCII pair as a single hex value.
 
 
     module Git
@@ -292,12 +276,13 @@ It turns out, we can just treat each 2 char pair as a hex value.
       end
     end
 
-
     Git.hex_to_bin "83ca550b885011f19e7ee36fe840252f9e334f9d"
     # => "\x83\xCAU\v\x88P\x11\xF1\x9E~\xE3o\xE8@%/\x9E3O\x9D"
 
     Git.bin_to_hex "\x83\xCAU\v\x88P\x11\xF1\x9E~\xE3o\xE8@%/\x9E3O\x9D"
     # => "83ca550b885011f19e7ee36fe840252f9e334f9d"
+
+---
 
 
 ## Reading Trees
@@ -306,56 +291,62 @@ To read a tree, we need to parse its contents.  There is probably a better way b
 
 
     module Git
-      def self.read_tree(contents)
-        leaves = []
-        contents.gsub /(\d+) (.+?)\x00(.+?)(?=$|100|400)/ do |match|
-          leaves.push({mode: $1, name: $2, sha: Git.bin_to_hex($3)})
+      class Tree
+        def parse(content)
+          super
+          @type = :tree
+          @leaves = []
+          @content.gsub /(\d+) (.+?)\x00(.+?)(?=$|100|400)/ do |match|
+            @leaves.push({mode: $1, name: $2, sha: Git.bin_to_hex($3)})
+          end unless @content.nil?
         end
-        leaves
-      end
 
-      def self.display_tree(hash)
-        Git.read(hash).map do |leaf|
-          "%06d" % leaf[:mode] + " #{leaf[:mode].to_i > 100000 ? 'blob' : 'tree'} #{leaf[:sha]} #{leaf[:name]}"
+        def show
+          @leaves.map do |leaf|
+            "%06d" % leaf[:mode] + " #{leaf[:mode].to_i > 100000 ? 'blob' : 'tree'} #{leaf[:sha]} #{leaf[:name]}"
+          end
         end
       end
     end
 
-    Git.display_tree "e629cb2a5967c458b98f73ded0d8d38359dcca82"
+
+    Git.show "e629cb2a5967c458b98f73ded0d8d38359dcca82"
     $ git cat-file -p e629cb
 
+---
 
 ## Writing Trees
 
 In normal usage, Git will write trees from the index. We won't bother implementing the index here but will instead assume that we are tracking everything in the working directory.  
-
 Instead, we'll pass git a directory from which it should recursively build a tree.  To make life easy, we'll also ignore hidden files & directories.
 
 
     module Git
-      def self.build_tree(dir=Dir.pwd)
-        leaves = []
-        Dir.foreach(dir) do |file|
-          stat = File::Stat.new("#{dir}/#{file}")
-          if stat.directory?
-            leaves.push({mode: stat.mode, name: file, sha: Git.save(:tree, Git.build_tree("#{dir}/#{file}"))}) unless File.basename(file)[0] == '.'
-          else
-            contents = File.read("#{dir}/#{file}") 
-            leaves.push({mode: stat.mode, name: file, sha: Git.save(:blob, contents)})
-          end
-        end
-        Git.format_tree leaves
-      end
+      class Tree
+        attr_accessor :leaves
 
-      def self.format_tree(leaves)
-        leaves.map {|leaf| "#{sprintf "%o", leaf[:mode]} #{leaf[:name]}\x00#{Git.hex_to_bin leaf[:sha]}" }.join
+        def self.write(dir=Dir.pwd)
+          tree = Git::Tree.new
+
+          Dir.foreach(dir) do |file|
+            stat = File::Stat.new("#{dir}/#{file}")
+            if stat.directory?
+              tree.leaves.push({mode: "#{sprintf "%o", stat.mode}", name: file, sha: Git::Tree.write("#{dir}/#{file}").hash}) unless File.basename(file)[0] == '.'
+            else
+              contents = File.read("#{dir}/#{file}") 
+              tree.leaves.push({mode: "#{sprintf "%o", stat.mode}", name: file, sha: Git::Blob.new(contents).hash})
+            end
+          end
+
+          tree
+        end
       end
     end
 
 
 This is the same as adding everything to the index and writing that.
 
-    Git.save(:tree, Git.build_tree)
+    Git::Tree.write.show
 
     $ git add -A | git write-tree
 
@@ -380,52 +371,128 @@ Commits also contain metadata about the author, committer, and time.
 
 ## Reading Commits
 
-Thankfully, commits are straight up text as per their output!
+Thankfully, commits are straight up text as per their output!  All we need to do is grab the tree and parent data.
 
 
     module Git
-      def self.read_commit(content)
-        content
+      class Commit
+        def parse(content)
+          super
+          @type = :commit
+          @parents = []
+
+          @content.gsub /(.+?) (.+?)\n/ do |match|
+            @tree = $2 if $1 == 'tree'
+            @parents.push $2 if $1 == 'parent'
+          end
+          
+          @content.gsub /\n\n(.+)$/ do |match|
+            @message = $1
+          end
+        end
       end
     end
 
-    Git.read("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
+    Git.show "ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66"
 
+---
+
+## References
+
+A big part of the Git ontology is the Object - blobs, trees, commits, & tags.  Another key bit are references which we now need to address before continuing.
+
+References are just textfile symlinks to commits or other references.
+
+The `HEAD` file is simply a reference to the current branch like `ref: refs/heads/master`.
+
+The `ORIG_HEAD` file is simply a reference to the last commit `ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66`.
+
+---
+
+## Branches
+
+Branches are also references.  Many people seem to think that branches are forks or code but they are nothing more than a symlink to a commit.
+
+That's it. They are just text files with a single SHA1 hash of a commit object.
+
+    
     module Git
-      def self.history(sha)
-        commit = Git.read sha
-        parent = commit.scan(/parent [a-g0-9]{40}/).last.split(' ').last
-        p parent
-        commit << Git.history(parent)
+      def self.branch(name)
+        File.read(".git/refs/heads/#{name}").strip
+      end
+
+      def self.HEAD
+        current_branch = File.read(".git/HEAD")
+        current_branch.split('/').last.strip
       end
     end
 
-    #p Git.history("ea8c2f1e26cef2ffd05fe69ecf01fc838ef72c66")
+    Git.branch "master"
+    Git.HEAD
 
-
-## Writing Commits
-
-
-Write a tree
-
-Create a commit
-
-Update ORIG_HEAD to last commit
-
-## The Tag
-
+---
 
 ## Branching
 
-Create a branch by setting the current commit to `.git/refs/heads/branchname`
+Create a branch by setting the current commit to `.git/refs/heads/branchname`, and updating the HEAD to that branch.
+
+
+    module Git
+      def self.branch!(name)
+        last_commit = Git.branch(Git.HEAD)
+        File.open ".git/refs/heads/#{name}", "w+" do |file|
+          file.write last_commit
+        end
+        last_commit
+      end
+    end
+
+    #Git.branch! "git-in-ruby-demo"
+
 
 Update the HEAD
 Checkout a commit from branch
+
+---
+
+## Writing Commits
+
+Writing commits is just the opposite of reading them.
+
+  
+    module Git
+      class Commit
+        def self.write(info)
+          content = "tree #{info[:tree]}\n"
+          info[:parents].each { |parent| @content << "parent #{parent}\n" }
+          content << "committer Biggus Diggus <biggus@diggus.rm> time\n\n"
+          content << info[:message]
+        end
+      end
+    end
+
+    
+
+
+
+## Committing
+
+Commiting is like taking a snapshot - typically from the index.
+
+We haven't talked much about the index yet but it is very similar to a tree for the root directory.  You add files to the index with `git add filename` and can view it with `git ls-files -s`
+
+For simplicity, we will assume the index is the same as the root directory and commit that.
+
+Commiting then, involves writing a tree from the index, creating a commit object, and updating the refs.
+
+Update ORIG_HEAD to last commit
+
 
 ## Checkout
 
 Update the HEAD to `ref: refs/heads/gh-pages`
 Update the working DIR
+
 
 ## Merging
 
