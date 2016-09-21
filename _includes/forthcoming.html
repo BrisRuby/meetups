@@ -4,4 +4,25 @@
       {% include post-summary.html %}
     {% endif %}
   {% endfor %}
+
+  {% for post in site.meetups reversed %}
+    {% assign this_month = site.time | date: '%B %Y' %}
+    {% if post.meetup ==  this_month %}
+      <li>
+        <div class="post-summary">
+          <h3 class="post-summary-title">
+            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </h3>
+          <p class="post-summary-meta">
+            {{ this_month }}
+              {% if post.author %}
+               • {{ post.author }}
+              {% endif %}
+            {% if post.meta %}
+              • {{ post.meta }}
+            {% endif %}</p>
+        </div>
+      </li>
+    {% endif %}
+  {% endfor %}  
 </ul>
