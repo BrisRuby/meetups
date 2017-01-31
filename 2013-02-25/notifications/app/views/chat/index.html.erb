@@ -1,0 +1,45 @@
+<% content_for :javascript do %>
+    <script src='/assets/stomp.js'></script>
+    <script src='/assets/chat.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+          var supported = ("WebSocket" in window);
+          if(!supported) {
+            var msg = "Your browser does not support Web Sockets. This example will not work properly.<br>";
+            msg += "Please use a Web Browser with Web Sockets support (WebKit or Google Chrome).";
+            $("#connect").html(msg);
+          }
+        });
+    </script>
+<% end %>
+<h1>Hi, <%= @user.name %></h1>
+<div id='connect'>
+  <form id='connect_form'>
+    <dl>
+      <dt><label for=connect_url>Server URL</label></dt>
+      <dd><input name=url id='connect_url' value='ws://localhost:61614/stomp'></dd>
+      <dt><label for=connect_login>Login</label></dt>
+      <dd><input id='connect_login' placeholder="User Login" value="0491a90520fa73e858b579bf57f83bf0"></dd>
+      <dt><label for=connect_passcode>Password</label></dt>
+      <dd><input id='connect_passcode' type=password placeholder="User Password" value="f87593fe1baae744a990902a32f9027a"></dd>
+      <dt><label for=destination>Destination</label></dt>
+      <dd><input id='destination' placeholder="Destination" value="<%= "#{@user.name}_#{@user.token}" %>"></dd>
+      <dt>&nbsp;</dt>
+      <dd><input type=submit id='connect_submit' value="Connect"></dd>
+    </dl>
+  </form>
+
+  <p>Use the form above to connect to the Stomp server and subscribe to the destination.</p>
+
+  <p>Once connected, you can send messages to the destination with the text field at the bottom of this page</p>
+
+</div>
+<div id="disconnect">
+  <form id='disconnect_form'>
+    <input type=submit id='disconnect_submit' value="Disconnect">
+  </form>
+</div>
+<pre id="debug"></pre>
+<div id="messages">
+</div>
+
